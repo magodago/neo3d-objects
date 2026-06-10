@@ -1,0 +1,11 @@
+*.pyc
+__pycache__/
+tiendas_*
+PLAN.md
+find_stores.py
+tiendas_db.py
+.paypal_creds.json
+run_paypal.py
+test_paypal.py
+arrancar_stripe.sh
+start_paypal.sh

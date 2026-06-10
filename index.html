@@ -843,7 +843,7 @@ function sendContact(e){
         btn.textContent='Catalogo enviado';btn.style.background='#22a855';
         const dl=document.createElement('p');
         dl.style.marginTop='8px';
-        dl.innerHTML='<a href="catalogo-neo-objects.pdf" target="_blank" style="color:#d4af37;text-decoration:underline;font-size:13px">Descargar catalogo PDF</a>';
+        dl.innerHTML='<a href="catalogo.pdf" target="_blank" style="color:#d4af37;text-decoration:underline;font-size:13px">Descargar catalogo PDF</a>';
         btn.parentNode.insertBefore(dl, btn.nextSibling);
         e.target.reset();
         setTimeout(()=>{btn.textContent='Recibir catalogo PDF';btn.disabled=false;btn.style.background='';if(dl.parentNode)dl.remove()},6000);
@@ -851,7 +851,7 @@ function sendContact(e){
         btn.textContent='Catalogo enviado';btn.style.background='#22a855';
         const dl=document.createElement('p');
         dl.style.marginTop='8px';
-        dl.innerHTML='<a href="catalogo-neo-objects.pdf" target="_blank" style="color:#d4af37;text-decoration:underline;font-size:13px">Descargar catalogo PDF</a>';
+        dl.innerHTML='<a href="catalogo.pdf" target="_blank" style="color:#d4af37;text-decoration:underline;font-size:13px">Descargar catalogo PDF</a>';
         btn.parentNode.insertBefore(dl, btn.nextSibling);
         e.target.reset();
         setTimeout(()=>{btn.textContent='Recibir catalogo PDF';btn.disabled=false;btn.style.background='';if(dl.parentNode)dl.remove()},6000);
