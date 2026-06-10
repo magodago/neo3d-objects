@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO Objects — Leads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@300;400;500;600&family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Sora',sans-serif;background:#050508;color:#fff;padding:40px}
+        h1{font-family:'Syne',sans-serif;font-size:28px;margin-bottom:4px}
+        .gold{color:#d4af37}
+        .sub{color:#6a6558;font-size:13px;margin-bottom:24px}
+        .stats{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+        .stat{background:#0a0a12;border:1px solid #1a1a24;border-radius:12px;padding:16px 24px;min-width:120px}
+        .stat h3{font-family:'Orbitron',sans-serif;font-size:24px;color:var(--gold,#d4af37)}
+        .stat p{font-size:11px;color:#6a6558;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+        table{width:100%;border-collapse:collapse;background:#0a0a12;border-radius:12px;overflow:hidden;border:1px solid #1a1a24}
+        th{background:#111;padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#6a6558;border-bottom:1px solid #1a1a24;font-family:'Orbitron',sans-serif}
+        td{padding:12px 16px;font-size:13px;border-bottom:1px solid #1a1a24;color:#ccc}
+        tr:hover td{background:#0f0f1a}
+        .badge{background:rgba(212,175,55,.1);color:#d4af37;padding:2px 10px;border-radius:100px;font-size:11px}
+        .empty{text-align:center;padding:60px;color:#6a6558}
+        .btn{background:#d4af37;color:#050508;border:none;padding:10px 24px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;margin-top:16px;font-family:'Sora',sans-serif}
+        .btn:hover{background:#e8d5a3}
+        .btn-outline{background:transparent;border:1px solid #1a1a24;color:#fff}
+        .btn-outline:hover{border-color:#d4af37;color:#d4af37}
+        .hidden{display:none}
+        .export-info{font-size:12px;color:#6a6558;margin-top:12px;line-height:1.6}
+        @media(max-width:768px){body{padding:20px}table{font-size:12px}td,th{padding:8px 10px}}
+    </style>
+</head>
+<body>
+    <h1>NE<span class="gold">O</span> <span style="color:#6a6558;font-size:14px;font-weight:300;margin-left:8px">Lead Management</span></h1>
+    <p class="sub">Todos los leads capturados desde el formulario de contacto y los pedidos del carrito</p>
+    <div class="stats" id="stats"></div>
+    <div style="margin-bottom:16px">
+        <button class="btn" onclick="exportCSV()">Exportar CSV</button>
+        <button class="btn btn-outline" onclick="exportJSON()">Exportar JSON</button>
+        <button class="btn btn-outline" onclick="clearLeads()">Limpiar leads</button>
+    </div>
+    <table id="leadsTable">
+        <thead>
+            <tr><th>Fecha</th><th>Nombre</th><th>Email</th><th>Tienda</th><th>Tel&eacute;fono</th><th>Tipo</th><th>Origen</th></tr>
+        </thead>
+        <tbody id="leadsBody"></tbody>
+    </table>
+    <div class="export-info">
+        Los leads tambi&eacute;n se env&iacute;an autom&aacute;ticamente a <strong>formulasia76@gmail.com</strong> cuando alguien rellena el formulario de contacto.
+        <br>Usa "Exportar CSV" para importarlos a MailerLite, Brevo o cualquier herramienta de email marketing.
+    </div>
+
+    <script>
+        function render(){
+            const leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
+            const tbody=document.getElementById('leadsBody');
+            const stats=document.getElementById('stats');
+
+            stats.innerHTML=`
+                <div class="stat"><h3>${leads.length}</h3><p>Total leads</p></div>
+                <div class="stat"><h3>${new Set(leads.filter(l=>l.email).map(l=>l.email)).size}</h3><p>Emails &uacute;nicos</p></div>
+                <div class="stat"><h3>${leads.filter(l=>l.source==='contact-form').length}</h3><p>Formulario cat&aacute;logo</p></div>
+                <div class="stat"><h3>${leads.filter(l=>l.source!=='contact-form'||!l.source).length}</h3><p>Pedidos carrito</p></div>
+            `;
+
+            if(leads.length===0){
+                tbody.innerHTML='<tr><td colspan="7" class="empty">No hay leads todav&iacute;a. Comparte la web para empezar a captar clientes.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML=leads.reverse().map(l=>{
+                const d=l.date?new Date(l.date).toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'}):'-';
+                const source=l.source==='contact-form'?'<span class="badge">Cat&aacute;logo</span>':'<span class="badge" style="background:rgba(255,255,255,.05);color:#aaa">Pedido</span>';
+                const name=l.name||l.nombre||'-';
+                const email=l.email||'-';
+                const tienda=l.tienda||l.store||'-';
+                const telefono=l.phone||l.telefono||'-';
+                const tipo=l.tipo||l.type||'-';
+                return `<tr><td>${d}</td><td>${name}</td><td>${email}</td><td>${tienda}</td><td>${telefono}</td><td>${tipo}</td><td>${source}</td></tr>`;
+            }).join('');
+        }
+
+        function exportCSV(){
+            const leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
+            if(!leads.length){alert('No hay leads para exportar');return;}
+            const headers=['Fecha','Nombre','Email','Tienda','Teléfono','Tipo','Mensaje','Origen','Productos','Total'];
+            const rows=leads.map(l=>[
+                l.date||'','',l.name||l.nombre||'',l.email||'',l.tienda||l.store||'',l.phone||l.telefono||'',l.tipo||'',l.mensaje||'',
+                l.source||'','',l.items||'',l.total||''
+            ].map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','));
+            const csv=[headers.join(','),...rows].join('\n');
+            const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+            const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='neo-leads.csv';a.click();
+        }
+
+        function exportJSON(){
+            const leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
+            if(!leads.length){alert('No hay leads');return;}
+            const blob=new Blob([JSON.stringify(leads,null,2)],{type:'application/json'});
+            const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='neo-leads.json';a.click();
+        }
+
+        function clearLeads(){
+            if(!confirm('¿Eliminar todos los leads?'))return;
+            localStorage.removeItem('neo_leads');
+            render();
+        }
+
+        render();
+    </script>
+</body>
+</html>
