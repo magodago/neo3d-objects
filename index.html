@@ -840,6 +840,18 @@ function sendContact(e){
             _captcha:'false'
         })
     }).then(()=>{
+        // Also save to MailerLite + CSV via our API
+        try{
+            fetch('https://5834e1806db328.lhr.life/add-lead',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({
+                    name:lead.nombre||'',email:lead.email||'',tienda:lead.tienda||'',
+                    telefono:lead.telefono||'',tipo:lead.tipo||'',source:'contact-form'
+                })
+            }).catch(()=>{});
+        }catch(e){}
+
         btn.textContent='Catalogo enviado';btn.style.background='#22a855';
         const dl=document.createElement('p');
         dl.style.marginTop='8px';
