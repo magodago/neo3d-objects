@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido confirmado - NEO Objects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Sora:wght@300;400;500&family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Sora',sans-serif;background:#050508;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+        .card{background:#0a0a12;border:1px solid rgba(212,175,55,.25);border-radius:24px;padding:48px;max-width:480px;width:100%;text-align:center}
+        .icon{width:72px;height:72px;border-radius:50%;background:rgba(212,175,55,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px;color:var(--gold,#d4af37)}
+        h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;margin-bottom:8px}
+        .gold{color:#d4af37}
+        .sub{color:#a09890;font-size:14px;line-height:1.7;margin-bottom:24px}
+        .details{background:rgba(255,255,255,.02);border-radius:12px;padding:20px;margin-bottom:24px;text-align:left}
+        .details .row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#ccc}
+        .details .row.total{font-weight:600;color:var(--gold,#d4af37);border-top:1px solid #1a1a24;margin-top:6px;padding-top:10px;font-size:15px}
+        .btn{display:inline-block;padding:14px 32px;background:#d4af37;color:#050508;border-radius:100px;font-size:14px;font-weight:600;text-decoration:none;transition:all .3s}
+        .btn:hover{background:#e8d5a3;transform:translateY(-2px)}
+        .info{font-size:11px;color:#6a6558;margin-top:16px;line-height:1.6}
+        @media(max-width:480px){.card{padding:32px 20px}}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">&#10003;</div>
+        <h1>&iexcl;Pago realizado con &eacute;xito!</h1>
+        <p class="sub">Gracias por tu compra en NEO Objects. Te hemos enviado un resumen del pedido a tu correo electr&oacute;nico.</p>
+        <div class="details" id="orderDetails">
+            <div class="row"><span>Pedido</span><span id="orderId">NEO-0001</span></div>
+            <div class="row"><span>Total pagado</span><span class="gold" id="orderTotal">-- &euro;</span></div>
+            <div class="row"><span>Estado</span><span style="color:#22a855">Confirmado</span></div>
+            <div class="row total"><span>Plazo de producci&oacute;n</span><span>24-72h</span></div>
+        </div>
+        <p style="font-size:13px;color:#a09890;margin-bottom:20px">Recibir&aacute;s un correo con el n&uacute;mero de seguimiento cuando enviemos tu pedido.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+            <a href="index.html" class="btn">Seguir comprando</a>
+            <a href="https://wa.me/34658237988" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);border-radius:100px;color:#25D366;font-size:13px;font-weight:600;text-decoration:none;transition:all .3s">WhatsApp</a>
+        </div>
+        <p class="info">Si no recibes el correo en los pr&oacute;ximos minutos, escr&iacute;benos por WhatsApp y lo revisamos.</p>
+    </div>
+    <script>
+        // Read total from URL params
+        const params=new URLSearchParams(window.location.search);
+        const total=params.get('total');
+        if(total)document.getElementById('orderTotal').textContent=total+' \u20ac';
+        document.getElementById('orderId').textContent='NEO-'+String(Math.floor(Math.random()*9000)+1000);
+    </script>
+</body>
+</html>

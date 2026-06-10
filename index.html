@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEO Objects &mdash; Impresión 3D Premium</title>
+    <title>NEO Objects &mdash; Impresi&oacute;n 3D Premium</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Sora:wght@200;300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
@@ -40,20 +40,20 @@
     .hero-tag{display:inline-block;padding:10px 24px;border:1px solid var(--border-gold);border-radius:100px;font-size:11px;font-weight:500;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-family:var(--font-accent);margin-bottom:36px;background:rgba(212,175,55,.05)}
     #hero h1{font-family:var(--font-display);font-size:clamp(36px,7vw,88px);font-weight:800;letter-spacing:-2px;line-height:1.04;margin-bottom:20px;max-width:900px;padding:0 10px;word-break:break-word}
     #hero h1 .gold{background:linear-gradient(135deg,#d4af37 0%,#f0d68a 50%,#d4af37 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero-desc{font-size:clamp(15px,1.6vw,20px);color:#f0e8d8;font-weight:300;max-width:620px;line-height:1.7;margin-bottom:36px;padding:0 16px;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+    .hero-desc{font-size:clamp(15px,1.6vw,20px);color:#f0e8d8;font-weight:300;max-width:620px;line-height:1.7;margin-bottom:32px;padding:0 16px;text-shadow:0 1px 6px rgba(0,0,0,.4)}
     .hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:0 16px}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 36px;border-radius:100px;font-size:14px;font-weight:600;transition:all .4s;cursor:pointer;border:none;font-family:var(--font-body);letter-spacing:.3px}
     .btn-primary{background:var(--gold);color:var(--bg)}
     .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,175,55,.25)}
     .btn-secondary{background:transparent;color:#fff;border:1px solid var(--border);padding:16px 36px}
     .btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
-    .hero-stats{display:flex;gap:40px;margin-top:60px;flex-wrap:wrap;justify-content:center;padding:0 16px}
+    .hero-stats{display:flex;gap:40px;margin-top:50px;flex-wrap:wrap;justify-content:center;padding:0 16px}
     .hero-stat{text-align:center}
     .hero-stat h3{font-family:var(--font-accent);font-size:clamp(24px,5vw,34px);font-weight:600;color:var(--gold)}
     .hero-stat p{font-size:11px;color:#f0e8d8;margin-top:4px;letter-spacing:.5px;text-transform:uppercase}
 
-    /* HERO IMAGE STRIP */
-    .hero-image-strip{width:100%;max-height:40vh;overflow:hidden;position:relative;margin-top:10px}
+    /* HERO IMAGE */
+    .hero-image-strip{width:100%;max-height:35vh;overflow:hidden;position:relative;margin-top:20px}
     .hero-image-strip img{width:100%;height:100%;object-fit:cover}
     .hero-image-strip .strip-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,8,.6) 0%,transparent 30%,transparent 70%,rgba(5,5,8,.6) 100%)}
     .hero-image-strip .strip-label{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:var(--font-accent);font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;background:rgba(5,5,8,.6);padding:8px 20px;border-radius:100px;border:1px solid var(--border-gold)}
@@ -103,7 +103,7 @@
 
     /* PRODUCTS */
     .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-    .product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .4s}
+    .product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .4s;cursor:pointer}
     .product-card:hover{border-color:var(--border-gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
     .product-card .prod-img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
     .product-card .prod-body{padding:18px}
@@ -112,10 +112,27 @@
     .product-card .prod-desc{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .product-card .prod-meta{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
     .product-card .prod-price{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--gold)}
-    .product-card .prod-wholesale{font-size:11px;color:var(--text-muted)}
     .btn-add{background:rgba(212,175,55,.12);border:1px solid var(--border-gold);color:var(--gold);padding:9px 18px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;transition:all .3s;font-family:var(--font-body);letter-spacing:.3px}
     .btn-add:hover{background:rgba(212,175,55,.25)}
     .btn-add.added{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+
+    /* PRODUCT MODAL */
+    .prod-modal{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center;padding:20px}
+    .prod-modal.active{display:flex}
+    .prod-modal-box{background:var(--bg-card);border:1px solid var(--border-gold);border-radius:20px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr}
+    .prod-modal-box .pm-img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px 0 0 0}
+    .prod-modal-box .pm-body{padding:32px}
+    .prod-modal-box .pm-cat{font-family:var(--font-accent);font-size:10px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+    .prod-modal-box h2{font-family:var(--font-display);font-size:22px;font-weight:700;margin-bottom:8px;line-height:1.15}
+    .prod-modal-box .pm-desc{font-size:14px;color:#ccc;line-height:1.7;margin-bottom:20px}
+    .prod-modal-box .pm-price{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold);margin-bottom:16px}
+    .prod-modal-close{position:absolute;top:12px;right:12px;z-index:1;background:rgba(5,5,8,.7);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;backdrop-filter:blur(8px)}
+    .prod-modal-close:hover{border-color:var(--gold);color:var(--gold)}
+    @media(max-width:768px){
+        .prod-modal-box{grid-template-columns:1fr;max-width:400px}
+        .prod-modal-box .pm-img{border-radius:20px 20px 0 0}
+        .prod-modal-box .pm-body{padding:24px}
+    }
 
     /* CART */
     .cart-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .4s}
@@ -131,7 +148,7 @@
     .cart-item img{width:52px;height:52px;border-radius:8px;object-fit:cover}
     .cart-item-info{flex:1}
     .cart-item-info h4{font-size:13px;font-weight:600;margin-bottom:2px}
-    .cart-item-info>p{font-size:11px;color:var(--text-muted)}
+    .cart-item-info .ci-price{font-size:11px;color:var(--text-muted)}
     .cart-item-qty{display:flex;align-items:center;gap:6px;margin-top:4px}
     .cart-item-qty button{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all .3s;font-family:var(--font-body)}
     .cart-item-qty button:hover{border-color:var(--gold);color:var(--gold)}
@@ -140,8 +157,12 @@
     .cart-item-remove:hover{color:#ff4444}
     .cart-empty{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:14px;line-height:1.7}
     .cart-footer{padding:16px 20px;border-top:1px solid var(--border)}
+    .cart-sub{display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);margin-bottom:6px}
+    .cart-shipping{display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .cart-shipping .free{color:#22a855}
     .cart-total{display:flex;justify-content:space-between;font-size:17px;font-weight:600;margin-bottom:16px}
     .cart-total span:last-child{font-family:var(--font-display);color:var(--gold)}
+    .cart-notice{font-size:10px;color:#6a6558;text-align:center;margin-bottom:12px;line-height:1.5}
     .btn-checkout{width:100%;padding:16px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s;font-family:var(--font-body);background:var(--gold);color:var(--bg);border:none;letter-spacing:.3px}
     .btn-checkout:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,175,55,.2)}
     .btn-checkout:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
@@ -149,7 +170,7 @@
     .cart-notification.show{transform:translateX(0)}
     .cart-notification .icon{width:32px;height:32px;border-radius:50%;background:rgba(212,175,55,.15);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:16px;font-weight:700;font-family:var(--font-display)}
 
-    /* CHECKOUT MODAL */
+    /* CHECKOUT */
     .checkout-modal{position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:20px}
     .checkout-modal.active{display:flex}
     .checkout-box{background:var(--bg-card);border:1px solid var(--border-gold);border-radius:20px;max-width:460px;width:100%;padding:32px;max-height:90vh;overflow-y:auto}
@@ -166,16 +187,6 @@
     .checkout-box .btn-pay:disabled{opacity:.5;cursor:not-allowed;transform:none}
     .checkout-close{float:right;background:none;border:none;color:var(--text-muted);font-size:20px;cursor:pointer;padding:4px}
     .checkout-close:hover{color:var(--gold)}
-    .checkout-success{display:none;text-align:center;padding:30px 0}
-    .checkout-success.active{display:block}
-    .checkout-success .check{width:60px;height:60px;border-radius:50%;background:rgba(212,175,55,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--gold);font-size:28px}
-
-    /* B2B */
-    .b2b-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:32px 0}
-    .b2b-item{padding:20px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;transition:all .3s}
-    .b2b-item:hover{border-color:var(--border-gold);background:rgba(212,175,55,.03)}
-    .b2b-item h4{font-family:var(--font-display);font-size:14px;font-weight:600;margin-bottom:6px;color:var(--gold)}
-    .b2b-item p{font-size:12px;color:var(--text-muted);line-height:1.6;margin:0}
 
     /* CONTACT */
     .contact-section{background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.04) 0%,transparent 60%);padding:80px 20px;text-align:center}
@@ -200,16 +211,13 @@
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
-    .reveal-d1{transition-delay:.1s}
-    .reveal-d2{transition-delay:.2s}
-    .reveal-d3{transition-delay:.3s}
 
     /* RESPONSIVE */
     @media(max-width:768px){
         nav{padding:14px 20px}
         .nav-links a:not(.nav-cart){display:none}
         #hero{padding:100px 16px 40px}
-        .hero-image-strip{max-height:25vh}
+        .hero-image-strip{max-height:20vh}
         .section{padding:56px 0}
         .section-pad{padding-left:20px;padding-right:20px}
         .products-grid{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -220,7 +228,7 @@
         .btn-add{padding:7px 14px;font-size:11px}
         .bg-section{min-height:45vh}
         .bg-section .wrap{padding:40px 20px}
-        .hero-stats{gap:24px;margin-top:30px}
+        .hero-stats{gap:24px;margin-top:25px}
         .offer-bar p span{display:block;margin:3px 0}
         .categories-grid{grid-template-columns:repeat(2,1fr);gap:16px}
         .category-card{min-height:220px}
@@ -278,10 +286,10 @@
     <div class="bg-glow2"></div>
     <div class="hero-tag">Impresi&oacute;n 3D Premium &middot; Hecho en Espa&ntilde;a</div>
     <h1>Objetos que <span class="gold">transforman</span> espacios</h1>
-    <p class="hero-desc">Cada pieza es &uacute;nica. Dise&ntilde;amos y fabricamos objetos decorativos con acabado sedoso de alta calidad. Minimalismo anal&oacute;gico para espacios que merecen ser distintos.</p>
+    <p class="hero-desc">Cada pieza es &uacute;nica. Dise&ntilde;amos y fabricamos objetos decorativos con acabado sedoso de alta calidad. Compra como particular o solicita precios especiales para tu tienda.</p>
     <div class="hero-cta">
-        <a href="#categorias" class="btn btn-primary">Explorar cat&aacute;logo</a>
-        <a href="#mayoristas" class="btn btn-secondary">Venta al por mayor</a>
+        <a href="#categorias" class="btn btn-primary">Ver cat&aacute;logo</a>
+        <a href="#mayoristas" class="btn btn-secondary">Soy tienda / mayorista</a>
     </div>
     <div class="hero-image-strip reveal">
         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=85" alt="Dise&ntilde;o 3D por ordenador" loading="lazy">
@@ -292,21 +300,21 @@
         <div class="hero-stat"><h3>100+</h3><p>Productos exclusivos</p></div>
         <div class="hero-stat"><h3>10</h3><p>Categor&iacute;as</p></div>
         <div class="hero-stat"><h3>24-72h</h3><p>Producci&oacute;n y env&iacute;o</p></div>
-        <div class="hero-stat"><h3>100%</h3><p>Hecho en Espa&ntilde;a</p></div>
+        <div class="hero-stat"><h3>6 &euro;</h3><p>Env&iacute;o a pen&iacute;nsula</p></div>
     </div>
 </section>
 
 <!----- OFFER BAR ----->
 <div class="offer-bar">
-    <p><span>Env&iacute;o gratis desde 100 &euro;</span> &bull; <span>Precios mayoristas desde 10 unidades</span> &bull; <span>Personalizaci&oacute;n para tu tienda</span></p>
+    <p><span>Env&iacute;o gratis desde 100 &euro;</span> &bull; <span>Env&iacute;o a pen&iacute;nsula 6 &euro;</span> &bull; <span>No enviamos a Islas</span> &bull; <span>Precios especiales para tiendas</span></p>
 </div>
 
-<!----- CATEGORIES PREMIUM ----->
+<!----- CATEGORIES ----->
 <section class="section section-pad" id="categorias">
     <div class="section-header reveal">
         <div class="section-label">Colecci&oacute;n</div>
         <h2 class="section-title">Categor&iacute;as</h2>
-        <p class="section-sub">Diez l&iacute;neas de producto dise&ntilde;adas para tiendas de decoraci&oacute;n, regalo y estilo de vida</p>
+        <p class="section-sub">Diez l&iacute;neas de producto dise&ntilde;adas para decoraci&oacute;n, regalo y estilo de vida</p>
     </div>
     <div class="categories-grid" id="categoriesGrid"></div>
 </section>
@@ -316,42 +324,58 @@
     <div class="section-header reveal">
         <div class="section-label">Cat&aacute;logo</div>
         <h2 class="section-title">Productos destacados</h2>
-        <p class="section-sub">Lo m&aacute;s solicitado por tiendas de decoraci&oacute;n en toda Espa&ntilde;a. Precios de f&aacute;brica sin intermediarios.</p>
+        <p class="section-sub">Piezas &uacute;nicas fabricadas bajo pedido. Pulsa en cualquier producto para ver todos los detalles.</p>
     </div>
     <div id="productsContainer" class="products-grid"></div>
 </section>
 
-<!----- B2B BG SECTION ----->
+<!----- PRODUCT MODAL ----->
+<div class="prod-modal" id="prodModal">
+    <div class="prod-modal-box" style="position:relative">
+        <button class="prod-modal-close" onclick="closeProdModal()">&times;</button>
+        <img class="pm-img" id="pmImg" src="" alt="">
+        <div class="pm-body">
+            <div class="pm-cat" id="pmCat"></div>
+            <h2 id="pmTitle"></h2>
+            <p class="pm-desc" id="pmDesc"></p>
+            <div id="pmExtra" style="font-size:13px;color:#6a6558;margin-bottom:16px;line-height:1.7"></div>
+            <div class="pm-price" id="pmPrice"></div>
+            <button class="btn btn-primary" id="pmAddBtn" style="width:100%">A&ntilde;adir al carrito</button>
+        </div>
+    </div>
+</div>
+
+<!----- B2B SECTION ----->
 <section class="bg-section" id="mayoristas">
     <img class="bg-img parallax-img" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85" alt="Oficina premium" loading="lazy">
     <div class="bg-overlay left"></div>
     <div class="wrap">
         <div class="content reveal">
-            <div class="section-label" style="color:var(--gold);font-family:var(--font-accent)">Venta al por mayor</div>
-            <h2 class="section-title" style="color:#fff">Tiendas, trabajemos <span class="gold">juntos</span></h2>
-            <p class="section-text">Ofrecemos condiciones especiales para establecimientos de decoraci&oacute;n, regalos y retail en toda Espa&ntilde;a. Producto exclusivo, precios de f&aacute;brica y env&iacute;o prioritario.</p>
+            <div class="section-label" style="color:var(--gold);font-family:var(--font-accent)">Para tiendas y profesionales</div>
+            <h2 class="section-title" style="color:#fff">Venta al por <span class="gold">mayor</span></h2>
+            <p class="section-text">Si tienes una tienda de decoraci&oacute;n, regalos o un proyecto profesional, trabajamos contigo con condiciones especiales, precios por volumen y modelos exclusivos para tu negocio.</p>
             <div class="b2b-grid">
                 <div class="b2b-item"><h4>Pedido m&iacute;nimo flexible</h4><p>Desde 10 unidades por modelo. Sin m&iacute;nimo de cat&aacute;logo.</p></div>
-                <div class="b2b-item"><h4>Descuento mayorista</h4><p>Entre el 40% y el 60% sobre el precio de venta al p&uacute;blico.</p></div>
-                <div class="b2b-item"><h4>Env&iacute;o gratuito</h4><p>En pedidos superiores a 100 &euro;. Entregas en 24-72 horas.</p></div>
-                <div class="b2b-item"><h4>Exclusividad territorial</h4><p>Modelos exclusivos para tu tienda sin competencia en tu zona.</p></div>
-                <div class="b2b-item"><h4>Fotograf&iacute;a profesional</h4><p>Te enviamos im&aacute;genes de producto listas para tu web y redes.</p></div>
-                <div class="b2b-item"><h4>Cat&aacute;logo f&iacute;sico</h4><p>Solicita nuestro cat&aacute;logo completo sin compromiso.</p></div>
+                <div class="b2b-item"><h4>Descuento por volumen</h4><p>Precios especiales progresivos seg&uacute;n cantidad.</p></div>
+                <div class="b2b-item"><h4>Env&iacute;o gratuito</h4><p>En pedidos superiores a 100 &euro;.</p></div>
+                <div class="b2b-item"><h4>Exclusividad territorial</h4><p>Modelos exclusivos para tu tienda sin competencia.</p></div>
+                <div class="b2b-item"><h4>Fotograf&iacute;a profesional</h4><p>Im&aacute;genes de producto listas para tu web.</p></div>
+                <div class="b2b-item"><h4>Cat&aacute;logo con precios</h4><p>Solicita nuestro cat&aacute;logo mayorista completo.</p></div>
             </div>
-            <a href="#contacto" class="btn btn-primary" style="margin-top:8px">Solicitar informaci&oacute;n mayorista</a>
+            <a href="#contacto" class="btn btn-primary" style="margin-top:8px">Solicitar cat&aacute;logo mayorista</a>
         </div>
     </div>
 </section>
 
 <!----- QUALITY SECTION ----->
 <section class="bg-section" style="min-height:50vh">
-    <img class="bg-img parallax-img" src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=1400&q=85" alt="Abstracto geom&eacute;trico" loading="lazy">
+    <img class="bg-img parallax-img" src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=1400&q=85" alt="Abstracto" loading="lazy">
     <div class="bg-overlay center"></div>
     <div class="wrap">
         <div class="content center reveal">
             <div class="section-label" style="color:var(--gold);font-family:var(--font-accent)">Calidad premium</div>
             <h2 class="section-title" style="color:#fff">Fabricaci&oacute;n aditiva de <span class="gold">alta precisi&oacute;n</span></h2>
-            <p class="section-text" style="max-width:560px;margin:0 auto 28px">Cada pieza se fabrica con par&aacute;metros optimizados para conseguir un acabado sedoso sin marcas de capa visibles. Probamos cada dise&ntilde;o antes de ponerlo a la venta.</p>
+            <p class="section-text" style="max-width:560px;margin:0 auto 28px">Cada pieza se fabrica con par&aacute;metros optimizados para conseguir el mejor acabado. Probamos cada dise&ntilde;o antes de ponerlo a la venta.</p>
             <div style="display:flex;gap:40px;justify-content:center;flex-wrap:wrap">
                 <div><h3 style="font-family:var(--font-accent);font-size:clamp(20px,3vw,28px);color:var(--gold)">Materiales premium</h3><p style="font-size:12px;color:#f0e8d8;letter-spacing:.5px">PLA, PETG, resina seg&uacute;n pieza</p></div>
                 <div><h3 style="font-family:var(--font-accent);font-size:clamp(20px,3vw,28px);color:var(--gold)">0.08mm</h3><p style="font-size:12px;color:#f0e8d8;letter-spacing:.5px">Altura de capa</p></div>
@@ -369,7 +393,7 @@
         <div class="content center reveal" style="margin:0 auto;text-align:center">
             <div class="section-label" style="color:var(--gold);font-family:var(--font-accent)">Dise&ntilde;o propio</div>
             <h2 class="section-title" style="color:#fff">Cada objeto es una <span class="gold">pieza &uacute;nica</span></h2>
-            <p class="section-text" style="max-width:560px;margin:0 auto 0">Nuestro equipo de dise&ntilde;o crea cada modelo desde cero. No revendemos archivos de terceros ni utilizamos dise&ntilde;os gen&eacute;ricos. Cada producto nace en nuestros ordenadores y cobra vida en nuestras impresoras.</p>
+            <p class="section-text" style="max-width:560px;margin:0 auto 0">Creamos cada modelo desde cero. No revendemos archivos de terceros. Cada producto nace en nuestros ordenadores y cobra vida en nuestras impresoras.</p>
         </div>
     </div>
 </section>
@@ -379,14 +403,14 @@
     <div class="reveal">
         <div class="section-label" style="margin-bottom:12px">Contacto</div>
         <h2 class="section-title" style="margin-bottom:10px">Solicita tu cat&aacute;logo mayorista</h2>
-        <p style="color:var(--text-muted);max-width:480px;margin:0 auto;font-size:14px;line-height:1.7">Rellena el formulario y te enviaremos el cat&aacute;logo PDF completo con precios y condiciones para tu tienda.</p>
+        <p style="color:var(--text-muted);max-width:480px;margin:0 auto;font-size:14px;line-height:1.7">Rellena el formulario y te enviamos el cat&aacute;logo PDF con precios mayoristas y condiciones para tu tienda.</p>
     </div>
     <form class="contact-form" id="contactForm" onsubmit="return sendContact(event)">
         <input type="text" name="nombre" placeholder="Nombre completo" required>
         <input type="text" name="tienda" placeholder="Nombre de la tienda o empresa" required>
         <input type="email" name="email" placeholder="Correo electr&oacute;nico" required>
         <input type="tel" name="telefono" placeholder="Tel&eacute;fono (opcional)">
-        <input type="hidden" name="_subject" value="Nuevo lead NEO Objects - Catalogo mayorista">
+        <input type="hidden" name="_subject" value="Nuevo lead NEO Objects - Cat&aacute;logo mayorista">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_gotcha" style="display:none">
         <select name="tipo" required>
@@ -408,11 +432,11 @@
 <!----- FOOTER ----->
 <footer>
     NE<span style="color:var(--gold)">O</span> Objects &middot; Impresi&oacute;n 3D Premium &middot; Hecho en Madrid &middot; <span class="gold">2026</span>
-    <br><span style="font-size:11px;color:#6a6558;margin-top:4px;display:inline-block">Fabricaci&oacute;n aditiva de alta precisi&oacute;n. Dise&ntilde;o minimalista.</span>
+    <br><span style="font-size:11px;color:#6a6558;margin-top:4px;display:inline-block">Fabricaci&oacute;n aditiva. Dise&ntilde;o minimalista. Env&iacute;os solo a pen&iacute;nsula.</span>
 </footer>
 
 <!----- WHATSAPP ----->
-<a class="whatsapp-btn" href="https://wa.me/34658237988" target="_blank" rel="noopener" aria-label="Chatear por WhatsApp">
+<a class="whatsapp-btn" href="https://wa.me/34658237988" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     <span class="whatsapp-tooltip">Escr&iacute;benos por WhatsApp</span>
 </a>
@@ -433,10 +457,10 @@
         </div>
     </div>
     <div class="cart-footer" id="cartFooter" style="display:none">
-        <div class="cart-total">
-            <span>Total</span>
-            <span id="cartTotal">0 &euro;</span>
-        </div>
+        <div class="cart-sub"><span>Subtotal</span><span id="cartSubtotal">0 &euro;</span></div>
+        <div class="cart-shipping"><span>Env&iacute;o (pen&iacute;nsula)</span><span id="cartShipping">6 &euro;</span></div>
+        <div class="cart-total"><span>Total</span><span id="cartTotal">0 &euro;</span></div>
+        <p class="cart-notice">Gratis desde 100 &euro; &middot; No enviamos a Islas Canarias, Baleares, Ceuta ni Melilla</p>
         <button class="btn-checkout" onclick="openCheckout()">Pagar ahora</button>
     </div>
 </div>
@@ -447,7 +471,7 @@
         <button class="checkout-close" onclick="closeCheckout()">&times;</button>
         <div id="checkoutForm">
             <h2>Finalizar pedido</h2>
-            <p class="sub">Completa tus datos para recibir tu presupuesto personalizado</p>
+            <p class="sub">Completa tus datos para ir al pago seguro con Stripe</p>
             <div class="order-summary" id="orderSummary"></div>
             <label>Nombre completo</label>
             <input type="text" id="chName" placeholder="Ej: Carlos Mart&iacute;nez" required>
@@ -457,14 +481,8 @@
             <input type="tel" id="chPhone" placeholder="+34 612 345 678" required>
             <label>Direcci&oacute;n de env&iacute;o</label>
             <input type="text" id="chAddress" placeholder="Calle, n&uacute;mero, ciudad, c&oacute;digo postal" required>
-            <button class="btn-pay" onclick="processPayment()" id="payBtn">Pagar <span id="payAmount"></span></button>
-        </div>
-        <div class="checkout-success" id="checkoutSuccess">
-            <div class="check">&#10003;</div>
-            <h2 style="margin-bottom:8px">&iexcl;Recibido!</h2>
-            <p style="color:var(--text-muted);font-size:14px;margin-bottom:4px">Te enviamos el presupuesto a tu correo en menos de 24h.</p>
-            <p style="color:var(--gold);font-size:13px">Gracias por confiar en NEO Objects.</p>
-            <button class="btn btn-primary" style="margin-top:24px" onclick="closeCheckout()">Cerrar</button>
+            <button class="btn-pay" onclick="processPayment()" id="payBtn">Ir a pagar con Stripe &rarr;</button>
+            <p style="font-size:10px;color:#6a6558;text-align:center;margin-top:8px">Pago 100% seguro procesado por Stripe. No almacenamos datos de tarjeta.</p>
         </div>
     </div>
 </div>
@@ -476,7 +494,7 @@
 </div>
 
 <script>
-// DATA
+// ─── DATA ───
 const CAT_IMAGES={
     planters:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800&q=85',
     vases:'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=85',
@@ -492,31 +510,33 @@ const CAT_IMAGES={
 const PROD_IMG='https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&q=85';
 
 const categories=[
-    {id:'planters',name:'Maceteros',desc:'Geom&eacute;tricos, colgantes y mini suculentas. Dise&ntilde;o minimalista para plantas de interior.',count:10},
-    {id:'vases',name:'Jarrones',desc:'Altos, cortos, escult&oacute;ricos. Piezas que son el centro de atenci&oacute;n de cualquier estancia.',count:12},
-    {id:'candles',name:'Portavelas',desc:'Individuales, sets y colgantes. La luz m&aacute;s bella se merece un pedestal a su altura.',count:10},
-    {id:'figures',name:'Figuras decorativas',desc:'Abstractas, animales, bustos cl&aacute;sicos. Peque&ntilde;as esculturas para estanter&iacute;as y mesas.',count:10},
-    {id:'desk',name:'Organizadores',desc:'Soportes, bandejas, portal&aacute;pices. El orden como forma de belleza funcional.',count:10},
+    {id:'planters',name:'Maceteros',desc:'Geom\u00e9tricos, colgantes y mini suculentas. Dise\u00f1o minimalista para plantas de interior.',count:10},
+    {id:'vases',name:'Jarrones',desc:'Altos, cortos, escult\u00f3ricos. Piezas que son el centro de atenci\u00f3n de cualquier estancia.',count:12},
+    {id:'candles',name:'Portavelas',desc:'Individuales, sets y colgantes. La luz m\u00e1s bella se merece un pedestal a su altura.',count:10},
+    {id:'figures',name:'Figuras decorativas',desc:'Abstractas, animales, bustos cl\u00e1sicos. Peque\u00f1as esculturas para estanter\u00edas y mesas.',count:10},
+    {id:'desk',name:'Organizadores',desc:'Soportes, bandejas, portal\u00e1pices. El orden como forma de belleza funcional.',count:10},
     {id:'jewelry',name:'Joyeros',desc:'Bandejas para anillos, soportes para pulseras, expositores para collares.',count:8},
     {id:'trays',name:'Bandejas decorativas',desc:'Catch-all, bandejas de servir, fuentes. Para recibidores, mesas y cocinas.',count:10},
-    {id:'wall',name:'Adornos de pared',desc:'Paneles geom&eacute;tricos, estantes flotantes, cuadros 3D. La pared como lienzo.',count:10},
-    {id:'seasonal',name:'Navidad y estacional',desc:'&Aacute;rboles m&iacute;nimos, estrellas 3D, adornos. Dise&ntilde;o contempor&aacute;neo para fechas se&ntilde;aladas.',count:10},
-    {id:'gifts',name:'Regalos y detalles',desc:'Llaveros, imanes, posavasos, marcap&aacute;ginas. El regalo perfecto existe y es anal&oacute;gico.',count:10},
+    {id:'wall',name:'Adornos de pared',desc:'Paneles geom\u00e9tricos, estantes flotantes, cuadros 3D. La pared como lienzo.',count:10},
+    {id:'seasonal',name:'Navidad y estacional',desc:'\u00c1rboles m\u00ednimos, estrellas 3D, adornos. Dise\u00f1o contempor\u00e1neo para fechas se\u00f1aladas.',count:10},
+    {id:'gifts',name:'Regalos y detalles',desc:'Llaveros, imanes, posavasos, marcap\u00e1ginas. El regalo perfecto existe y es anal\u00f3gico.',count:10},
 ];
 const pNames={
-    planters:['Macetero Geom&eacute;trico','Macetero Ola','Mini Macetero Suculenta','Macetero Colgante Nube','Macetero Esfera','Macetero Tr&iacute;pode','Macetero Cubo','Jardinera Lineal','Macetero Huevo','Set Mini Maceteros 3'],
-    vases:['Jarr&oacute;n Espiral','Jarr&oacute;n Ola','Jarr&oacute;n Cil&iacute;ndrico','Jarr&oacute;n Plegado','Jarr&oacute;n Ameba','Jarr&oacute;n Alto','Jarr&oacute;n Textura','Set 3 Jarrones','Jarr&oacute;n Gotas','Jarr&oacute;n Asim&eacute;trico'],
-    candles:['Portavelas Hexagonal','Set 3 Portavelas','Portavelas Colgante','Candelabro Mini','Portavelas Geom&eacute;trico','Farolillo de Mesa','Portavelas Cubo','Set Portavelas T&eacute;','Portavelas Ola','Candelabro Triple'],
-    figures:['Busto Atenea','Figura Gato Egipcio','Figura Cisne','Figura Zorro','&Aacute;rbol Zen','Esfera Abstracta','Cabeza Cl&aacute;sica','Ola Escult&oacute;rica','Monta&ntilde;a Minimalista','Torso Abstracto'],
-    desk:['Soporte para M&oacute;vil','Bandeja de Llaves','Portal&aacute;pices Minimal','Organizador de Oficina','Soporte para Tablet','Base para Reloj','Clip Gesti&oacute;n Cables','Set 4 Posavasos','Bandeja Documentos','Soporte para Tarjetas'],
-    jewelry:['Bandeja para Anillos','Soporte para Pulseras','Expositor para Collares','Caja de Joyas Peque&ntilde;a','Base para Relojes','Soporte para Pendientes','Organizador de Joyas','Cofre Joyero Mini'],
-    trays:['Bandeja Ola','Bandeja Geom&eacute;trica','Catch-all Nube','Bandeja Rectangular','Bandeja Hexagonal','Fuente Decorativa','Catch-all Esfera','Bandeja Onda','Bandeja Cuadrada','Set 3 Bandejas'],
-    wall:['Panel Hexagonal','Estante Nube','Cuadro 3D Abstracto','Panel Ola','Perchero de Pared','Estante Geom&eacute;trico','Panel de C&iacute;rculos','Cuadro Monta&ntilde;a','Panel Lineal','Espejo con Marco'],
-    seasonal:['&Aacute;rbol Navidad Mini','Adorno Esfera','Estrella 3D','Copo de Nieve','Bel&eacute;n Abstracto','Figura Reno','Set 3 Bolas','&Aacute;ngel Mini','Casa de Navidad','Calendario Adviento'],
-    gifts:['Llavero Inicial','Set 4 Imanes','Set 6 Posavasos','Llavero Abstracto','Abrecartas','Marcap&aacute;ginas','Llavero Animal','Set Imanes Nevera','Llavero Placa','Mini Escultura'],
+    planters:['Macetero Geom\u00e9trico','Macetero Ola','Mini Macetero Suculenta','Macetero Colgante Nube','Macetero Esfera','Macetero Tr\u00edpode','Macetero Cubo','Jardinera Lineal','Macetero Huevo','Set Mini Maceteros 3'],
+    vases:['Jarr\u00f3n Espiral','Jarr\u00f3n Ola','Jarr\u00f3n Cil\u00edndrico','Jarr\u00f3n Plegado','Jarr\u00f3n Ameba','Jarr\u00f3n Alto','Jarr\u00f3n Textura','Set 3 Jarrones','Jarr\u00f3n Gotas','Jarr\u00f3n Asim\u00e9trico'],
+    candles:['Portavelas Hexagonal','Set 3 Portavelas','Portavelas Colgante','Candelabro Mini','Portavelas Geom\u00e9trico','Farolillo de Mesa','Portavelas Cubo','Set Portavelas T\u00e9','Portavelas Ola','Candelabro Triple'],
+    figures:['Busto Atenea','Figura Gato Egipcio','Figura Cisne','Figura Zorro','\u00c1rbol Zen','Esfera Abstracta','Cabeza Cl\u00e1sica','Ola Escult\u00f3rica','Monta\u00f1a Minimalista','Torso Abstracto'],
+    desk:['Soporte para M\u00f3vil','Bandeja de Llaves','Portal\u00e1pices Minimal','Organizador de Oficina','Soporte para Tablet','Base para Reloj','Clip Gesti\u00f3n Cables','Set 4 Posavasos','Bandeja Documentos','Soporte para Tarjetas'],
+    jewelry:['Bandeja para Anillos','Soporte para Pulseras','Expositor para Collares','Caja de Joyas Peque\u00f1a','Base para Relojes','Soporte para Pendientes','Organizador de Joyas','Cofre Joyero Mini'],
+    trays:['Bandeja Ola','Bandeja Geom\u00e9trica','Catch-all Nube','Bandeja Rectangular','Bandeja Hexagonal','Fuente Decorativa','Catch-all Esfera','Bandeja Onda','Bandeja Cuadrada','Set 3 Bandejas'],
+    wall:['Panel Hexagonal','Estante Nube','Cuadro 3D Abstracto','Panel Ola','Perchero de Pared','Estante Geom\u00e9trico','Panel de C\u00edrculos','Cuadro Monta\u00f1a','Panel Lineal','Espejo con Marco'],
+    seasonal:['\u00c1rbol Navidad Mini','Adorno Esfera','Estrella 3D','Copo de Nieve','Bel\u00e9n Abstracto','Figura Reno','Set 3 Bolas','\u00c1ngel Mini','Casa de Navidad','Calendario Adviento'],
+    gifts:['Llavero Inicial','Set 4 Imanes','Set 6 Posavasos','Llavero Abstracto','Abrecartas','Marcap\u00e1ginas','Llavero Animal','Set Imanes Nevera','Llavero Placa','Mini Escultura'],
 };
 const basePrices=[14,22,12,24,16,12,18,20,14,8];
 const cart=[];
+const SHIPPING_COST=6;
+const FREE_SHIPPING_FROM=100;
 
 const products={};
 categories.forEach((cat,ci)=>{
@@ -525,28 +545,30 @@ categories.forEach((cat,ci)=>{
     names.forEach((name,i)=>{
         const v=Math.round((Math.random()-0.5)*6);
         const pvp=Math.max(5,basePrices[ci]+v);
+        const extras=[
+            'Fabricado bajo pedido con materiales premium. Cada pieza es \u00fanica.',
+            'Acabado sedoso de alta calidad. Dimensiones aproximadas: 12-18 cm.',
+            'Disponible en varios colores. Consulta disponibilidad por WhatsApp.',
+            'Ideal para decoraci\u00f3n de interiores. Combina con cualquier estilo.',
+        ];
         products[cat.id].push({
-            id:cat.id+'-'+i,name,category:cat.name,
-            desc:name+'. Dise&ntilde;o minimalista con acabado premium.',
-            pvp,wholesale:Math.round(pvp*0.5),
-            image:PROD_IMG
+            id:cat.id+'-'+i, name, category:cat.name,
+            desc: name+'. Dise\u00f1o minimalista con acabado premium.',
+            extra: extras[i%extras.length],
+            pvp, image:PROD_IMG
         });
     });
 });
 
-// RENDER CATEGORIES PREMIUM
+// ─── RENDER CATEGORIES ───
 function renderCategories(){
     const g=document.getElementById('categoriesGrid');
-    g.innerHTML=categories.map((c,i)=>'<div class="category-card" onclick="filterByCategory(\''+c.id+'\')">'+
+    g.innerHTML=categories.map(c=>'<div class="category-card" onclick="filterByCategory(\''+c.id+'\')">'+
         '<img class="cat-img" src="'+CAT_IMAGES[c.id]+'" alt="'+c.name+'" loading="lazy">'+
-        '<div class="cat-overlay"></div>'+
-        '<div class="cat-border"></div>'+
-        '<div class="cat-arrow">&#8594;</div>'+
-        '<div class="cat-content">'+
-        '<div class="cat-count">'+c.count+' productos</div>'+
-        '<h3>'+c.name+'</h3>'+
-        '<p>'+c.desc.split('.')[0]+'.</p>'+
-        '</div></div>'
+        '<div class="cat-overlay"></div><div class="cat-border"></div>'+
+        '<div class="cat-arrow">\u2192</div>'+
+        '<div class="cat-content"><div class="cat-count">'+c.count+' productos</div>'+
+        '<h3>'+c.name+'</h3><p>'+c.desc.split('.')[0]+'.</p></div></div>'
     ).join('');
 }
 
@@ -555,30 +577,57 @@ function filterByCategory(catId){
     renderProducts(catId);
 }
 
-// RENDER PRODUCTS (sin material ni tiempo)
+// ─── RENDER PRODUCTS ───
 function renderProducts(filterCat){
     const c=document.getElementById('productsContainer');
     let list=[];
-    if(filterCat&&products[filterCat]){
-        list=products[filterCat];
-    }else{
-        categories.forEach(cat=>{if(products[cat.id])products[cat.id].forEach(p=>list.push(p))});
-    }
-    c.innerHTML=list.map(p=>'<div class="product-card reveal">'+
+    if(filterCat&&products[filterCat]) list=products[filterCat];
+    else categories.forEach(cat=>{if(products[cat.id])products[cat.id].forEach(p=>list.push(p))});
+    c.innerHTML=list.map(p=>'<div class="product-card" onclick="openProdModal(\''+p.id+'\')">'+
         '<img class="prod-img" src="'+p.image+'" alt="'+p.name+'" loading="lazy">'+
         '<div class="prod-body">'+
         '<div class="prod-cat">'+p.category+'</div>'+
         '<h4>'+p.name+'</h4>'+
         '<p class="prod-desc">'+p.desc+'</p>'+
         '<div class="prod-meta">'+
-        '<div><div class="prod-price">'+p.pvp+' &euro;</div><div class="prod-wholesale">Mayorista: '+p.wholesale+' &euro;/ud</div></div>'+
-        '<button class="btn-add" onclick="addToCart(\''+p.id+'\')">A&ntilde;adir</button>'+
+        '<div class="prod-price">'+p.pvp+' \u20ac</div>'+
+        '<button class="btn-add" onclick="event.stopPropagation();addToCart(\''+p.id+'\')">A\u00f1adir</button>'+
         '</div></div></div>'
     ).join('');
     setTimeout(()=>{c.querySelectorAll('.reveal').forEach(e=>e.classList.add('visible'))},100);
 }
 
-// CART
+// ─── PRODUCT MODAL ───
+let pmProduct=null;
+function openProdModal(id){
+    for(const k in products){
+        const f=products[k].find(p=>p.id===id);
+        if(f){
+            pmProduct=f;
+            document.getElementById('pmImg').src=f.image;
+            document.getElementById('pmCat').textContent=f.category;
+            document.getElementById('pmTitle').textContent=f.name;
+            document.getElementById('pmDesc').textContent=f.desc+' '+f.extra;
+            document.getElementById('pmExtra').innerHTML=
+                'Fabricaci\u00f3n bajo pedido<br>'+
+                'Acabado premium de alta calidad<br>'+
+                'Tiempo de producci\u00f3n: 24-72h<br>'+
+                'Env\u00edo a pen\u00ednsula: 6 \u20ac (gratis desde 100 \u20ac)';
+            document.getElementById('pmPrice').textContent=f.pvp+' \u20ac';
+            document.getElementById('pmAddBtn').onclick=function(e){
+                e.stopPropagation();
+                addToCart(f.id);
+                closeProdModal();
+            };
+            document.getElementById('prodModal').classList.add('active');
+            return;
+        }
+    }
+}
+function closeProdModal(){document.getElementById('prodModal').classList.remove('active')}
+document.getElementById('prodModal').addEventListener('click',function(e){if(e.target===this)closeProdModal()});
+
+// ─── CART ───
 function addToCart(id){
     for(const k in products){
         const f=products[k].find(p=>p.id===id);
@@ -587,11 +636,18 @@ function addToCart(id){
             if(e)e.qty++;else cart.push({...f,qty:1});
             updateCart();showNotif(f.name);
             const el=event&&event.target;
-            if(el&&el.classList){el.textContent='A&ntilde;adido';el.classList.add('added');setTimeout(()=>{el.textContent='A&ntilde;adir';el.classList.remove('added')},1500);}
+            if(el&&el.classList){el.textContent='A\u00f1adido';el.classList.add('added');setTimeout(()=>{el.textContent='A\u00f1adir';el.classList.remove('added')},1500);}
             return;
         }
     }
 }
+
+function getShipping(){
+    const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
+    if(sub>=FREE_SHIPPING_FROM) return 0;
+    return SHIPPING_COST;
+}
+
 function updateCart(){
     const b=document.getElementById('cartBadge');
     const t=cart.reduce((s,i)=>s+i.qty,0);
@@ -603,12 +659,19 @@ function updateCart(){
     document.querySelectorAll('#cartItems .cart-item').forEach(el=>el.remove());
     const html=cart.map(i=>'<div class="cart-item">'+
         '<img src="'+i.image+'" alt="'+i.name+'">'+
-        '<div class="cart-item-info"><h4>'+i.name+'</h4><p>'+(i.pvp*i.qty)+' &euro;</p>'+
+        '<div class="cart-item-info"><h4>'+i.name+'</h4><p class="ci-price">'+(i.pvp*i.qty)+' \u20ac</p>'+
         '<div class="cart-item-qty"><button onclick="chgQty(\''+i.id+'\',-1)">-</button><span>'+i.qty+'</span><button onclick="chgQty(\''+i.id+'\',1)">+</button></div></div>'+
-        '<button class="cart-item-remove" onclick="rmItem(\''+i.id+'\')">&times;</button></div>'
+        '<button class="cart-item-remove" onclick="rmItem(\''+i.id+'\')">\u00d7</button></div>'
     ).join('');
     document.getElementById('cartItems').insertAdjacentHTML('beforeend',html);
-    document.getElementById('cartTotal').textContent=cart.reduce((s,i)=>s+i.pvp*i.qty,0)+' €';
+
+    const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
+    const ship=getShipping();
+    const total=sub+ship;
+    document.getElementById('cartSubtotal').textContent=sub+' \u20ac';
+    const shipEl=document.getElementById('cartShipping');
+    if(ship===0){shipEl.innerHTML='<span class="free">GRATIS</span>'}else{shipEl.textContent=ship+' \u20ac'}
+    document.getElementById('cartTotal').textContent=total+' \u20ac';
 }
 function chgQty(id,d){const i=cart.find(c=>c.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart.splice(cart.indexOf(i),1);updateCart()}
 function rmItem(id){const i=cart.findIndex(c=>c.id===id);if(i>-1)cart.splice(i,1);updateCart()}
@@ -632,110 +695,111 @@ function showNotif(name){
     n._t=setTimeout(()=>n.classList.remove('show'),2500);
 }
 
-// CHECKOUT
+// ─── CHECKOUT ───
 function openCheckout(){
-    const total=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
-    if(total===0)return;
+    if(!cart.length)return;
     closeCart();
-    document.getElementById('payAmount').textContent=total+' €';
+    const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
+    const ship=getShipping();
+    const total=sub+ship;
     const s=document.getElementById('orderSummary');
-    s.innerHTML=cart.map(i=>'<div class="line"><span>'+i.name+' x'+i.qty+'</span><span>'+(i.pvp*i.qty)+' €</span></div>').join('')+
-        '<div class="line total"><span>Total</span><span>'+total+' €</span></div>';
+    s.innerHTML=cart.map(i=>'<div class="line"><span>'+i.name+' x'+i.qty+'</span><span>'+(i.pvp*i.qty)+' \u20ac</span></div>').join('')+
+        '<div class="line"><span>Env\u00edo</span><span>'+(ship===0?'GRATIS':ship+' \u20ac')+'</span></div>'+
+        '<div class="line total"><span>Total</span><span>'+total+' \u20ac</span></div>';
     document.getElementById('checkoutModal').classList.add('active');
     document.getElementById('checkoutForm').style.display='block';
-    document.getElementById('checkoutSuccess').classList.remove('active');
 }
+
 function closeCheckout(){document.getElementById('checkoutModal').classList.remove('active')}
+document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeCheckout()});
 
 function processPayment(){
     const name=document.getElementById('chName').value.trim();
     const email=document.getElementById('chEmail').value.trim();
     const phone=document.getElementById('chPhone').value.trim();
     const address=document.getElementById('chAddress').value.trim();
-    if(!name||!email){alert('Completa nombre y correo electr&oacute;nico.');return;}
+    if(!name||!email){alert('Completa nombre y correo electr\u00f3nico.');return;}
     const btn=document.getElementById('payBtn');
-    btn.textContent='Procesando...';btn.disabled=true;
+    btn.textContent='Redirigiendo a Stripe...';btn.disabled=true;
 
-    // Build lead data
-    const items=cart.map(i=>i.name+' x'+i.qty+' ('+(i.pvp*i.qty)+' €)').join(', ');
-    const total=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
-    const leadData={name,email,phone,address,items,total,date:new Date().toISOString()};
-
-    // Save to localStorage lead list
+    // Save lead locally
+    const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
+    const total=sub+getShipping();
+    const lead={name,email,phone,address,items:cart.map(i=>i.name+' x'+i.qty+' ('+(i.pvp*i.qty)+' \u20ac)').join(', '),total,date:new Date().toISOString(),source:'checkout'};
     let leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
-    leads.push(leadData);
+    leads.push(lead);
     localStorage.setItem('neo_leads',JSON.stringify(leads));
 
-    setTimeout(()=>{
-        document.getElementById('checkoutForm').style.display='none';
-        document.getElementById('checkoutSuccess').classList.add('active');
-        cart.length=0;updateCart();
-        btn.textContent='Pagar';btn.disabled=false;
-    },1500);
+    // 🔴 STRIPE CHECKOUT
+    // When you have your Stripe account, replace the URL below with your actual
+    // Stripe Checkout or Payment Link URL.
+    // Example: 'https://buy.stripe.com/test_XXXXXXXXXX'
+    // You can create one at: https://dashboard.stripe.com/payment-links
+    const stripeCheckoutUrl = 'https://buy.stripe.com/PLACEHOLDER';
+
+    // Build query params with order info
+    const params = new URLSearchParams({
+        'prefilled_email': email,
+        'client_reference_id': 'NEO-' + Date.now(),
+    });
+
+    // Redirect to Stripe Checkout
+    // After payment, customer returns to success.html
+    setTimeout(() => {
+        window.location.href = stripeCheckoutUrl + '?' + params.toString() +
+            '&success_url=' + encodeURIComponent(window.location.origin + '/neo3d-objects/success.html?total=' + total);
+    }, 800);
 }
 
-// CONTACT FORM - sends to formulasia76@gmail.com via FormSubmit
+// ─── CONTACT FORM ───
 function sendContact(e){
     e.preventDefault();
     const btn=e.target.querySelector('button');
     btn.textContent='Enviando...';btn.disabled=true;
-
-    // Also save lead locally
     const fd=new FormData(e.target);
-    const localLead={};
-    fd.forEach((v,k)=>{if(k!=='_subject'&&k!=='_captcha'&&k!=='_gotcha')localLead[k]=v});
-    localLead.date=new Date().toISOString();
-    localLead.source='contact-form';
+    const lead={};
+    fd.forEach((v,k)=>{if(k!=='_subject'&&k!=='_captcha'&&k!=='_gotcha')lead[k]=v});
+    lead.date=new Date().toISOString();lead.source='contact-form';
     let leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
-    leads.push(localLead);
+    leads.push(lead);
     localStorage.setItem('neo_leads',JSON.stringify(leads));
 
-    // Send to email via FormSubmit.co
     fetch('https://formsubmit.co/ajax/formulasia76@gmail.com',{
         method:'POST',
         headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify({
-            name:localLead.nombre||'',
-            tienda:localLead.tienda||'',
-            email:localLead.email||'',
-            telefono:localLead.telefono||'',
-            tipo:localLead.tipo||'',
-            mensaje:localLead.mensaje||'',
-            _subject:'Nuevo lead NEO Objects - Catalogo mayorista',
+            name:lead.nombre||'',tienda:lead.tienda||'',email:lead.email||'',
+            telefono:lead.telefono||'',tipo:lead.tipo||'',mensaje:lead.mensaje||'',
+            _subject:'Nuevo lead NEO Objects - Cat\u00e1logo mayorista',
             _captcha:'false'
         })
-    }).then(r=>r.json()).then(()=>{
-        btn.textContent='Cat&aacute;logo enviado';
-        btn.style.background='#22a855';
-        e.target.reset();
-        setTimeout(()=>{btn.textContent='Recibir cat&aacute;logo PDF';btn.disabled=false;btn.style.background=''},3000);
+    }).then(()=>{
+        btn.textContent='Cat\u00e1logo enviado';btn.style.background='#22a855';e.target.reset();
+        setTimeout(()=>{btn.textContent='Recibir cat\u00e1logo PDF';btn.disabled=false;btn.style.background=''},3000);
     }).catch(()=>{
-        btn.textContent='Cat&aacute;logo enviado';
-        btn.style.background='#22a855';
-        e.target.reset();
-        setTimeout(()=>{btn.textContent='Recibir cat&aacute;logo PDF';btn.disabled=false;btn.style.background=''},3000);
+        btn.textContent='Cat\u00e1logo enviado';btn.style.background='#22a855';e.target.reset();
+        setTimeout(()=>{btn.textContent='Recibir cat\u00e1logo PDF';btn.disabled=false;btn.style.background=''},3000);
     });
     return false;
 }
 
-// NAV SCROLL
+// ─── NAV SCROLL ───
 let ls=0;const nav=document.getElementById('navbar');
 window.addEventListener('scroll',()=>{const c=window.scrollY;if(c>ls&&c>80)nav.classList.add('hidden');else nav.classList.remove('hidden');ls=c});
 
-// PARALLAX
+// ─── PARALLAX ───
 window.addEventListener('scroll',function(){
     document.querySelectorAll('.parallax-img').forEach(img=>{
         const sec=img.closest('.bg-section');
         if(!sec)return;
         const r=sec.getBoundingClientRect();
         if(r.bottom>0&&r.top<window.innerHeight){
-            const sp=0.3;const st=window.scrollY;
-            img.style.transform='translateY('+(-st*sp*0.5)+'px)';
+            img.style.transform='translateY('+(-window.scrollY*0.15)+'px)';
         }
     });
 });
 
-// REVEAL
+// ─── REVEAL ───
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1});
 document.addEventListener('DOMContentLoaded',()=>{renderCategories();renderProducts();document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))});
 </script>
