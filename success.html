@@ -41,11 +41,12 @@
         <p class="info">Si no recibes el correo en los pr&oacute;ximos minutos, escr&iacute;benos por WhatsApp y lo revisamos.</p>
     </div>
     <script>
-        // Read total from URL params
         const params=new URLSearchParams(window.location.search);
         const total=params.get('total');
+        const order=params.get('order');
         if(total)document.getElementById('orderTotal').textContent=total+' \u20ac';
-        document.getElementById('orderId').textContent='NEO-'+String(Math.floor(Math.random()*9000)+1000);
+        if(order)document.getElementById('orderId').textContent='NEO-'+order.slice(-6);
+        else document.getElementById('orderId').textContent='NEO-'+String(Math.floor(Math.random()*9000)+1000);
     </script>
 </body>
 </html>
