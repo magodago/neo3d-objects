@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO Objects — Impresión 3D Premium</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8D5A3;
+            --gold-dark: #A8892E;
+            --bg: #0A0A0A;
+            --bg-card: #111111;
+            --bg-card-hover: #1A1A1A;
+            --text: #FFFFFF;
+            --text-muted: #888888;
+            --border: #1E1E1E;
+            --border-gold: rgba(201, 168, 76, 0.3);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 20px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10,10,10,0.9); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+        .logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            background: var(--gold); color: var(--bg); padding: 10px 24px;
+            border-radius: 100px; font-size: 13px; font-weight: 600;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+        
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 120px 40px 80px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%);
+        }
+        .hero-tag {
+            display: inline-block; padding: 8px 20px; border: 1px solid var(--border-gold);
+            border-radius: 100px; font-size: 12px; font-weight: 500;
+            color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 96px); font-weight: 800;
+            letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero p {
+            font-size: clamp(16px, 2vw, 22px); color: var(--text-muted);
+            max-width: 600px; line-height: 1.6; font-weight: 300;
+        }
+        .hero-cta {
+            margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+        }
+        .btn-primary {
+            background: var(--gold); color: var(--bg); padding: 16px 40px;
+            border-radius: 100px; font-size: 15px; font-weight: 600;
+            text-decoration: none; transition: all 0.3s; border: none; cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+        .btn-secondary {
+            background: transparent; color: var(--text); padding: 16px 40px;
+            border-radius: 100px; font-size: 15px; font-weight: 500;
+            text-decoration: none; border: 1px solid var(--border); transition: all 0.3s;
+        }
+        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+        
+        .hero-stats {
+            display: flex; gap: 60px; margin-top: 80px; flex-wrap: wrap; justify-content: center;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat h3 { font-size: 32px; font-weight: 700; color: var(--gold); }
+        .hero-stat p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+        
+        /* ── CATEGORIES ── */
+        .section { padding: 100px 40px; max-width: 1280px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 {
+            font-size: clamp(32px, 5vw, 52px); font-weight: 700;
+            letter-spacing: -1px; margin-bottom: 16px;
+        }
+        .section-header p { color: var(--text-muted); font-size: 18px; max-width: 500px; margin: 0 auto; }
+        
+        .categories-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .category-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 30px; text-align: center;
+            transition: all 0.4s; cursor: pointer; position: relative; overflow: hidden;
+        }
+        .category-card:hover {
+            background: var(--bg-card-hover); border-color: var(--border-gold);
+            transform: translateY(-4px);
+        }
+        .category-card .icon { font-size: 48px; margin-bottom: 16px; }
+        .category-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .category-card p { font-size: 13px; color: var(--text-muted); }
+        .category-card .count {
+            display: inline-block; margin-top: 16px; padding: 4px 14px;
+            background: rgba(201,168,76,0.1); color: var(--gold);
+            border-radius: 100px; font-size: 12px; font-weight: 500;
+        }
+        
+        /* ── PRODUCTS ── */
+        .products-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px; margin-top: 60px;
+        }
+        .product-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 24px;
+            transition: all 0.4s; position: relative;
+        }
+        .product-card:hover {
+            border-color: var(--border-gold); transform: translateY(-4px);
+        }
+        .product-card .img-placeholder {
+            width: 100%; aspect-ratio: 1;
+            background: linear-gradient(135deg, #1A1A1A 0%, #222 100%);
+            border-radius: 12px; margin-bottom: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 48px; color: var(--gold); opacity: 0.5;
+        }
+        .product-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+        .product-card .desc { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+        .product-card .meta {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-top: 12px; border-top: 1px solid var(--border);
+        }
+        .product-card .price { font-size: 18px; font-weight: 700; color: var(--gold); }
+        .product-card .time { font-size: 12px; color: var(--text-muted); }
+        .product-card .wholesale {
+            display: inline-block; padding: 4px 10px;
+            background: rgba(201,168,76,0.08); color: var(--gold-light);
+            border-radius: 4px; font-size: 11px; font-weight: 500;
+        }
+        
+        /* ── B2B ── */
+        .b2b-section {
+            background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 100%);
+            border: 1px solid var(--border-gold); border-radius: 24px;
+            padding: 60px; text-align: center; margin-top: 60px;
+        }
+        .b2b-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 16px; }
+        .b2b-section p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
+        .b2b-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px; margin: 40px 0; text-align: left;
+        }
+        .b2b-item { padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; }
+        .b2b-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+        .b2b-item p { font-size: 13px; color: var(--text-muted); margin: 0; }
+        
+        /* ── CONTACT ── */
+        .contact-section {
+            padding: 80px 40px; text-align: center;
+            background: radial-gradient(ellipse at 50% 100%, rgba(201,168,76,0.05) 0%, transparent 60%);
+        }
+        .contact-section h2 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+        .contact-section p { color: var(--text-muted); margin-bottom: 30px; }
+        .contact-form {
+            max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;
+        }
+        .contact-form input, .contact-form textarea, .contact-form select {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 16px 20px; color: var(--text);
+            font-family: 'Inter', sans-serif; font-size: 14px; outline: none;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+            border-color: var(--gold);
+        }
+        .contact-form textarea { min-height: 120px; resize: vertical; }
+        .contact-form select { color: var(--text-muted); }
+        .contact-form select option { background: var(--bg); }
+        
+        /* ── FOOTER ── */
+        footer {
+            padding: 40px; text-align: center; border-top: 1px solid var(--border);
+            color: var(--text-muted); font-size: 13px;
+        }
+        footer span { color: var(--gold); }
+        
+        /* ── MODAL ── */
+        .modal { display: none; position: fixed; inset: 0; z-index: 200;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            align-items: center; justify-content: center; padding: 40px;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 24px; max-width: 600px; width: 100%; padding: 40px;
+            max-height: 80vh; overflow-y: auto;
+        }
+        .modal-close {
+            float: right; background: none; border: none; color: var(--text-muted);
+            font-size: 24px; cursor: pointer; transition: color 0.3s;
+        }
+        .modal-close:hover { color: var(--gold); }
+        .modal h2 { font-size: 28px; margin-bottom: 8px; }
+        .modal .subtitle { color: var(--text-muted); margin-bottom: 24px; }
+        
+        @media (max-width: 768px) {
+            nav { padding: 16px 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 100px 20px 60px; }
+            .section { padding: 60px 20px; }
+            .b2b-section { padding: 30px 20px; }
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+    <div class="logo">NEO<span> Objects</span></div>
+    <div class="nav-links">
+        <a href="#categorias">Catálogo</a>
+        <a href="#b2b">Venta al por mayor</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="nav-cta">Solicitar catálogo</a>
+    </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <div class="hero-tag">Impresión 3D Premium · Hecho en España</div>
+    <h1>Objetos que<br><span>transforman</span> espacios</h1>
+    <p>Diseño minimalista, fabricación aditiva de alta calidad. Cada pieza es única, impresa en PLA mate con acabado sedoso.</p>
+    <div class="hero-cta">
+        <a href="#categorias" class="btn-primary">Ver catálogo</a>
+        <a href="#b2b" class="btn-secondary">Para tiendas</a>
+    </div>
+    <div class="hero-stats">
+        <div class="hero-stat"><h3>100+</h3><p>Productos exclusivos</p></div>
+        <div class="hero-stat"><h3>10</h3><p>Categorías</p></div>
+        <div class="hero-stat"><h3>24-72h</h3><p>Producción</p></div>
+    </div>
+</section>
+
+<!-- ─── CATEGORÍAS ─── -->
+<section class="section" id="categorias">
+    <div class="section-header">
+        <h2>Categorías</h2>
+        <p>Diseñado para tiendas de regalo, decoración y estilo de vida</p>
+    </div>
+    <div class="categories-grid" id="categoriesGrid">
+        <!-- JS load -->
+    </div>
+</section>
+
+<!-- ─── PRODUCTOS ─── -->
+<section class="section">
+    <div class="section-header">
+        <h2>Productos destacados</h2>
+        <p>Los más solicitados por tiendas de decoración</p>
+    </div>
+    <div id="b2b">
+        <div class="b2b-section">
+            <h2>Venta al por mayor</h2>
+            <p>¿Tienes una tienda? Trabajamos con establecimientos de toda España con condiciones especiales.</p>
+            <div class="b2b-grid">
+                <div class="b2b-item">
+                    <h4>📦 Pedido mínimo</h4>
+                    <p>Desde 10 unidades por modelo</p>
+                </div>
+                <div class="b2b-item">
+                    <h4>🏷️ Precios mayoristas</h4>
+                    <p>40-60% descuento sobre PVP</p>
+                </div>
+                <div class="b2b-item">
+                    <h4>🚚 Envío gratis</h4>
+                    <p>Pedidos superiores a 100€ en España</p>
+                </div>
+                <div class="b2b-item">
+                    <h4>🔄 Exclusividad</h4>
+                    <p>Modelos exclusivos para tu tienda</p>
+                </div>
+                <div class="b2b-item">
+                    <h4>📸 Fotos profesionales</h4>
+                    <p>Te enviamos fotos para tu web</p>
+                </div>
+                <div class="b2b-item">
+                    <h4>📋 Catálogo físico</h4>
+                    <p>Muestra física sin compromiso</p>
+                </div>
+            </div>
+            <a href="#contacto" class="btn-primary">Solicitar catálogo mayorista</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CONTACTO ─── -->
+<section class="contact-section" id="contacto">
+    <h2>¿Te interesa?</h2>
+    <p>Solicita información o pide tu catálogo mayorista sin compromiso</p>
+    <form class="contact-form" id="contactForm" onsubmit="return sendContact(event)">
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="text" placeholder="Nombre de la tienda" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Teléfono">
+        <select required>
+            <option value="">¿Qué tipo de tienda eres?</option>
+            <option>Tienda de regalos</option>
+            <option>Tienda de decoración</option>
+            <option>Tienda online</option>
+            <option>Interiorista / Estudio de diseño</option>
+            <option>Otro</option>
+        </select>
+        <textarea placeholder="Cuéntanos qué te interesa... (opcional)"></textarea>
+        <button type="submit" class="btn-primary">Enviar solicitud</button>
+    </form>
+</section>
+
+<footer>
+    NEO <span>Objects</span> · Impresión 3D Premium · Hecho en Barcelona · <span>2026</span>
+</footer>
+
+<!-- ─── MODAL ─── -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <h2 id="modalTitle">Producto</h2>
+        <p class="subtitle" id="modalCategory">Categoría</p>
+        <div style="width:100%;aspect-ratio:1;background:linear-gradient(135deg,#1A1A1A,#222);border-radius:16px;margin-bottom:24px;display:flex;align-items:center;justify-content:center;font-size:80px;" id="modalImage">🏺</div>
+        <p id="modalDesc" style="color:var(--text-muted);margin-bottom:16px;"></p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;">
+            <span id="modalTime" style="padding:6px 16px;background:rgba(255,255,255,0.05);border-radius:100px;font-size:13px;"></span>
+            <span id="modalMaterial" style="padding:6px 16px;background:rgba(255,255,255,0.05);border-radius:100px;font-size:13px;"></span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid var(--border);">
+            <div>
+                <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Precio tienda (PVP)</div>
+                <div id="modalPrice" style="font-size:32px;font-weight:700;color:var(--gold);"></div>
+            </div>
+            <div style="text-align:right;">
+                <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Mayorista (10+ uds)</div>
+                <div id="modalWholesale" style="font-size:24px;font-weight:600;color:var(--gold-light);"></div>
+            </div>
+        </div>
+        <a href="#contacto" class="btn-primary" style="display:block;text-align:center;margin-top:24px;" onclick="closeModal()">Solicitar presupuesto</a>
+    </div>
+</div>
+
+<script>
+// ─── DATA ───
+const categories = [
+    { id: 'planters', name: 'Maceteros', icon: '🪴', desc: 'Geométricos, colgantes, mini suculentas', count: 10 },
+    { id: 'vases', name: 'Jarrones', icon: '🏺', desc: 'Altos, cortos, escultóricos', count: 12 },
+    { id: 'candles', name: 'Portavelas', icon: '🕯️', desc: 'Individuales, sets, colgantes', count: 10 },
+    { id: 'figures', name: 'Figuras decorativas', icon: '🐚', desc: 'Animales, abstractas, bustos', count: 10 },
+    { id: 'desk', name: 'Organizadores', icon: '✏️', desc: 'Escritorio, soportes, bandejas', count: 10 },
+    { id: 'jewelry', name: 'Joyeros', icon: '💍', desc: 'Anillos, pulseras, relojes', count: 8 },
+    { id: 'trays', name: 'Bandejas', icon: '🎯', desc: 'Catch-all, decorativas, servir', count: 10 },
+    { id: 'wall', name: 'Adornos pared', icon: '🖼️', desc: 'Paneles, estantes, cuadros', count: 10 },
+    { id: 'seasonal', name: 'Navidad + Estacional', icon: '🎄', desc: 'Árboles, adornos, belenes', count: 10 },
+    { id: 'gifts', name: 'Regalos menudos', icon: '🎁', desc: 'Llaveros, imanes, posavasos', count: 10 },
+];
+
+const products = {};
+
+// Generate products per category
+categories.forEach(cat => {
+    products[cat.id] = [];
+    const items = {
+        planters: ['Macetero Geo', 'Macetero Ola', 'Mini Suculenta', 'Colgante Nube', 'Macetero Esfera', 'Trípode', 'Macetero Cubo', 'Jardinera Lineal', 'Macetero Huevo', 'Set 3 Mini'],
+        vases: ['Jarrón Espiral', 'Jarrón Ola', 'Jarrón Cilíndrico', 'Jarrón Plegado', 'Jarrón Ameba', 'Jarrón Alto', 'Jarrón Textura', 'Set 3 Jarrones', 'Jarrón Gotas', 'Jarrón Asimétrico'],
+        candles: ['Portavelas Hexágono', 'Set 3 Portavelas', 'Portavelas Colgante', 'Candelabro Mini', 'Portavelas Geo', 'Farolillo', 'Portavelas Cubo', 'Set Té', 'Portavelas Ola', 'Candelabro Triple'],
+        figures: ['Busto Atenea', 'Gato Egipcio', 'Cisne', 'Zorro', 'Árbol Zen', 'Esfera Abstracta', 'Cabeza Clásica', 'Ola Escultórica', 'Montaña', 'Torso'],
+        desk: ['Soporte Móvil', 'Bandeja Llaves', 'Portalápices', 'Organizador Oficina', 'Soporte Tablet', 'Base Reloj', 'Clip Cable', 'Posavasos 4x', 'Bandeja Documentos', 'Soporte Tarjetas'],
+        jewelry: ['Bandeja Anillos', 'Soporte Pulseras', 'Expositor Collares', 'Caja Joyas Peq', 'Base Relojes', 'Soporte Pendientes', 'Organizador Joyas', 'Cofre Mini'],
+        trays: ['Bandeja Ola', 'Bandeja Geo', 'Catch-all Nube', 'Bandeja Rectángulo', 'Bandeja Hexágono', 'Fuente Decorativa', 'Catch-all Esfera', 'Bandeja Onda', 'Bandeja Cuadrado', 'Set 3 Bandejas'],
+        wall: ['Panel Hexágonos', 'Estante Nube', 'Cuadro 3D Abstracto', 'Panel Ola', 'Perchezo Pared', 'Estante Geo', 'Panel Círculos', 'Cuadro Montaña', 'Panel Lineal', 'Espejo Marco'],
+        seasonal: ['Árbol Mini', 'Adorno Esfera', 'Estrella 3D', 'Copo Nieve', 'Belén Abstracto', 'Reno', 'Set 3 Bolas', 'Ángel Mini', 'Casa Navidad', 'Calendario Adviento'],
+        gifts: ['Llavero Inicial', 'Imanes Set 4', 'Posavasos Set 6', 'Llavero Abstracto', 'Abrecartas', 'Marcapáginas', 'Llavero Animal', 'Set Imanes Frigorífico', 'Llavero Placa', 'Mini Escultura'],
+    };
+    
+    const icons = ['🏺','🪴','🕯️','🐚','✏️','💍','🎯','🖼️','🎄','🎁'];
+    const prices = [12,15,8,18,14,10,14,16,10,6];
+    const times = ['2-3h','2-4h','1-2h','3-5h','2-3h','1-2h','2-3h','2-4h','1-3h','30-60min'];
+    
+    (items[cat.id] || []).forEach((name, i) => {
+        const basePrice = prices[categories.indexOf(cat)] || 12;
+        const variation = Math.round((Math.random() - 0.5) * 4);
+        const pvp = basePrice + variation;
+        products[cat.id].push({
+            name,
+            icon: icons[categories.indexOf(cat)] || '✦',
+            desc: `${name} · Diseño minimalista en PLA mate`,
+            pvp,
+            wholesale: Math.round(pvp * 0.5),
+            time: times[categories.indexOf(cat)] || '2h',
+            material: 'PLA Mate'
+        });
+    });
+});
+
+// ─── RENDER ───
+function renderCategories() {
+    const grid = document.getElementById('categoriesGrid');
+    grid.innerHTML = categories.map(cat => `
+        <div class="category-card" onclick="scrollToProducts('${cat.id}')">
+            <div class="icon">${cat.icon}</div>
+            <h3>${cat.name}</h3>
+            <p>${cat.desc}</p>
+            <div class="count">${cat.count} productos</div>
+        </div>
+    `).join('');
+}
+
+function scrollToProducts(catId) {
+    document.getElementById('b2b').scrollIntoView({ behavior: 'smooth' });
+}
+
+function openProduct(name, catId) {
+    const product = products[catId]?.find(p => p.name === name);
+    if (!product) return;
+    const cat = categories.find(c => c.id === catId);
+    document.getElementById('modalTitle').textContent = product.name;
+    document.getElementById('modalCategory').textContent = cat ? cat.name : '';
+    document.getElementById('modalImage').textContent = product.icon;
+    document.getElementById('modalDesc').textContent = product.desc;
+    document.getElementById('modalTime').textContent = `⏱ ${product.time}`;
+    document.getElementById('modalMaterial').textContent = `🧵 ${product.material}`;
+    document.getElementById('modalPrice').textContent = `${product.pvp}€`;
+    document.getElementById('modalWholesale').textContent = `${product.wholesale}€`;
+    document.getElementById('productModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('productModal').classList.remove('active');
+}
+
+function sendContact(e) {
+    e.preventDefault();
+    alert('✓ Solicitud enviada. Te contactaremos en menos de 24h.');
+    e.target.reset();
+    return false;
+}
+
+// ─── INIT ───
+renderCategories();
+
+// Click outside modal to close
+document.getElementById('productModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+</script>
+</body>
+</html>
