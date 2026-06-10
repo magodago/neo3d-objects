@@ -720,35 +720,51 @@ function processPayment(){
     const address=document.getElementById('chAddress').value.trim();
     if(!name||!email){alert('Completa nombre y correo electr\u00f3nico.');return;}
     const btn=document.getElementById('payBtn');
-    btn.textContent='Redirigiendo a Stripe...';btn.disabled=true;
+    btn.textContent='Conectando con Stripe...';btn.disabled=true;
 
     // Save lead locally
     const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
-    const total=sub+getShipping();
+    const ship=getShipping();
+    const total=sub+ship;
     const lead={name,email,phone,address,items:cart.map(i=>i.name+' x'+i.qty+' ('+(i.pvp*i.qty)+' \u20ac)').join(', '),total,date:new Date().toISOString(),source:'checkout'};
     let leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
     leads.push(lead);
     localStorage.setItem('neo_leads',JSON.stringify(leads));
 
-    // 🔴 STRIPE CHECKOUT
-    // When you have your Stripe account, replace the URL below with your actual
-    // Stripe Checkout or Payment Link URL.
-    // Example: 'https://buy.stripe.com/test_XXXXXXXXXX'
-    // You can create one at: https://dashboard.stripe.com/payment-links
-    const stripeCheckoutUrl = 'https://buy.stripe.com/PLACEHOLDER';
+    // 📡 Call our backend to create a Stripe Checkout Session
+    const checkoutAPI = 'CHECKOUT_API_URL'; // ← se reemplaza al iniciar el servidor
 
-    // Build query params with order info
-    const params = new URLSearchParams({
-        'prefilled_email': email,
-        'client_reference_id': 'NEO-' + Date.now(),
+    const items = cart.map(i => ({
+        name: i.name,
+        price: i.pvp,
+        qty: i.qty,
+        category: i.category
+    }));
+
+    fetch(checkoutAPI, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            items: items,
+            shipping: ship,
+            customer_email: email,
+            success_url: window.location.origin + '/neo3d-objects/success.html?total=' + total,
+            cancel_url: window.location.origin + '/neo3d-objects/'
+        })
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.url) {
+            window.location.href = data.url;
+        } else {
+            alert('Error al conectar con Stripe: ' + (data.error || 'Error desconocido'));
+            btn.textContent='Pagar ahora'; btn.disabled=false;
+        }
+    })
+    .catch(err => {
+        alert('Error de conexi\u00f3n. Int\u00e9ntalo de nuevo.');
+        btn.textContent='Pagar ahora'; btn.disabled=false;
     });
-
-    // Redirect to Stripe Checkout
-    // After payment, customer returns to success.html
-    setTimeout(() => {
-        window.location.href = stripeCheckoutUrl + '?' + params.toString() +
-            '&success_url=' + encodeURIComponent(window.location.origin + '/neo3d-objects/success.html?total=' + total);
-    }, 800);
 }
 
 // ─── CONTACT FORM ───
