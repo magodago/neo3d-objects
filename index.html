@@ -286,10 +286,10 @@
     <div class="bg-glow2"></div>
     <div class="hero-tag">Impresi&oacute;n 3D Premium &middot; Hecho en Espa&ntilde;a</div>
     <h1>Objetos que <span class="gold">transforman</span> espacios</h1>
-    <p class="hero-desc">Cada pieza es &uacute;nica. Dise&ntilde;amos y fabricamos objetos decorativos con acabado sedoso de alta calidad. Compra como particular o solicita precios especiales para tu tienda.</p>
+    <p class="hero-desc">Cada pieza es &uacute;nica. Vendemos tanto a particulares como a tiendas y mayoristas. Si eres tienda o mayorista solicita tu cat&aacute;logo de precios.</p>
     <div class="hero-cta">
         <a href="#categorias" class="btn btn-primary">Ver cat&aacute;logo</a>
-        <a href="#mayoristas" class="btn btn-secondary">Soy tienda / mayorista</a>
+        <a href="#contacto" class="btn btn-secondary">Soy tienda / mayorista</a>
     </div>
     <div class="hero-image-strip reveal">
         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1400&q=85" alt="Dise&ntilde;o 3D por ordenador" loading="lazy">
@@ -499,15 +499,26 @@ const CAT_IMAGES={
     planters:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800&q=85',
     vases:'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=800&q=85',
     candles:'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=800&q=85',
-    figures:'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=85',
-    desk:'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=85',
-    jewelry:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85',
-    trays:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85',
+    figures:'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=85',
+    desk:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85',
+    jewelry:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85',
+    trays:'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=85',
     wall:'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85',
-    seasonal:'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=85',
-    gifts:'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=85',
+    seasonal:'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=85',
+    gifts:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85',
 };
-const PROD_IMG='https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&q=85';
+const PROD_IMG={
+    planters:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&q=85',
+    vases:'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&q=85',
+    candles:'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&q=85',
+    figures:'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&q=85',
+    desk:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=85',
+    jewelry:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85',
+    trays:'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=85',
+    wall:'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600&q=85',
+    seasonal:'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=85',
+    gifts:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=85',
+};
 
 const categories=[
     {id:'planters',name:'Maceteros',desc:'Geom\u00e9tricos, colgantes y mini suculentas. Dise\u00f1o minimalista para plantas de interior.',count:10},
@@ -545,17 +556,10 @@ categories.forEach((cat,ci)=>{
     names.forEach((name,i)=>{
         const v=Math.round((Math.random()-0.5)*6);
         const pvp=Math.max(5,basePrices[ci]+v);
-        const extras=[
-            'Fabricado bajo pedido con materiales premium. Cada pieza es \u00fanica.',
-            'Acabado sedoso de alta calidad. Dimensiones aproximadas: 12-18 cm.',
-            'Disponible en varios colores. Consulta disponibilidad por WhatsApp.',
-            'Ideal para decoraci\u00f3n de interiores. Combina con cualquier estilo.',
-        ];
         products[cat.id].push({
             id:cat.id+'-'+i, name, category:cat.name,
             desc: name+'. Dise\u00f1o minimalista con acabado premium.',
-            extra: extras[i%extras.length],
-            pvp, image:PROD_IMG
+            pvp, image:PROD_IMG[cat.id]
         });
     });
 });
@@ -836,11 +840,21 @@ function sendContact(e){
             _captcha:'false'
         })
     }).then(()=>{
-        btn.textContent='Cat\u00e1logo enviado';btn.style.background='#22a855';e.target.reset();
-        setTimeout(()=>{btn.textContent='Recibir cat\u00e1logo PDF';btn.disabled=false;btn.style.background=''},3000);
+        btn.textContent='Catalogo enviado';btn.style.background='#22a855';
+        const dl=document.createElement('p');
+        dl.style.marginTop='8px';
+        dl.innerHTML='<a href="catalogo-neo-objects.pdf" target="_blank" style="color:#d4af37;text-decoration:underline;font-size:13px">Descargar catalogo PDF</a>';
+        btn.parentNode.insertBefore(dl, btn.nextSibling);
+        e.target.reset();
+        setTimeout(()=>{btn.textContent='Recibir catalogo PDF';btn.disabled=false;btn.style.background='';if(dl.parentNode)dl.remove()},6000);
     }).catch(()=>{
-        btn.textContent='Cat\u00e1logo enviado';btn.style.background='#22a855';e.target.reset();
-        setTimeout(()=>{btn.textContent='Recibir cat\u00e1logo PDF';btn.disabled=false;btn.style.background=''},3000);
+        btn.textContent='Catalogo enviado';btn.style.background='#22a855';
+        const dl=document.createElement('p');
+        dl.style.marginTop='8px';
+        dl.innerHTML='<a href="catalogo-neo-objects.pdf" target="_blank" style="color:#d4af37;text-decoration:underline;font-size:13px">Descargar catalogo PDF</a>';
+        btn.parentNode.insertBefore(dl, btn.nextSibling);
+        e.target.reset();
+        setTimeout(()=>{btn.textContent='Recibir catalogo PDF';btn.disabled=false;btn.style.background='';if(dl.parentNode)dl.remove()},6000);
     });
     return false;
 }
