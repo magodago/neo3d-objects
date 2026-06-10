@@ -471,7 +471,7 @@
         <button class="checkout-close" onclick="closeCheckout()">&times;</button>
         <div id="checkoutForm">
             <h2>Finalizar pedido</h2>
-            <p class="sub">Completa tus datos para ir al pago seguro con Stripe</p>
+            <p class="sub">Completa tus datos y elige c&oacute;mo pagar</p>
             <div class="order-summary" id="orderSummary"></div>
             <label>Nombre completo</label>
             <input type="text" id="chName" placeholder="Ej: Carlos Mart&iacute;nez" required>
@@ -481,8 +481,8 @@
             <input type="tel" id="chPhone" placeholder="+34 612 345 678" required>
             <label>Direcci&oacute;n de env&iacute;o</label>
             <input type="text" id="chAddress" placeholder="Calle, n&uacute;mero, ciudad, c&oacute;digo postal" required>
-            <button class="btn-pay" onclick="processPayment()" id="payBtn">Ir a pagar con Stripe &rarr;</button>
-            <p style="font-size:10px;color:#6a6558;text-align:center;margin-top:8px">Pago 100% seguro procesado por Stripe. No almacenamos datos de tarjeta.</p>
+            <div id="paypal-button-container" style="margin-top:16px"></div>
+            <p style="font-size:10px;color:#6a6558;text-align:center;margin-top:8px">Pago 100% seguro procesado por PayPal. Aceptamos tarjetas de cr&eacute;dito y d&eacute;bito.</p>
         </div>
     </div>
 </div>
@@ -696,6 +696,8 @@ function showNotif(name){
 }
 
 // ─── CHECKOUT ───
+const CHECKOUT_API = 'PAYPAL_API_URL'; // se reemplaza con la URL del túnel
+
 function openCheckout(){
     if(!cart.length)return;
     closeCart();
@@ -706,65 +708,105 @@ function openCheckout(){
     s.innerHTML=cart.map(i=>'<div class="line"><span>'+i.name+' x'+i.qty+'</span><span>'+(i.pvp*i.qty)+' \u20ac</span></div>').join('')+
         '<div class="line"><span>Env\u00edo</span><span>'+(ship===0?'GRATIS':ship+' \u20ac')+'</span></div>'+
         '<div class="line total"><span>Total</span><span>'+total+' \u20ac</span></div>';
+
     document.getElementById('checkoutModal').classList.add('active');
     document.getElementById('checkoutForm').style.display='block';
+
+    // Render PayPal button when modal opens
+    setTimeout(renderPayPalButton, 300);
 }
 
 function closeCheckout(){document.getElementById('checkoutModal').classList.remove('active')}
 document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeCheckout()});
 
-function processPayment(){
+// Save lead to localStorage
+function saveLead(name, email, phone, address){
+    const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
+    const ship=getShipping();
+    const total=sub+ship;
+    const lead={name,email,phone,address,items:cart.map(i=>i.name+' x'+i.qty+' ('+(i.pvp*i.qty)+' \u20ac)').join(', '),total,date:new Date().toISOString(),source:'checkout-paypal'};
+    let leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
+    leads.push(lead);
+    localStorage.setItem('neo_leads',JSON.stringify(leads));
+}
+
+// Render PayPal button
+function renderPayPalButton(){
+    const container=document.getElementById('paypal-button-container');
+    container.innerHTML='';
+
+    // Check if PayPal SDK is loaded
+    if(typeof paypal === 'undefined'){
+        container.innerHTML='<p style="color:#6a6558;font-size:13px;text-align:center">Cargando PayPal...</p>';
+        // Load PayPal SDK if not loaded
+        const script=document.createElement('script');
+        script.src='https://www.paypal.com/sdk/js?client-id=PAYPAL_CLIENT_ID&currency=EUR&locale=es_ES'; // ← reemplazar
+        script.onload=()=>renderPayPalButton();
+        document.body.appendChild(script);
+        return;
+    }
+
     const name=document.getElementById('chName').value.trim();
     const email=document.getElementById('chEmail').value.trim();
     const phone=document.getElementById('chPhone').value.trim();
     const address=document.getElementById('chAddress').value.trim();
-    if(!name||!email){alert('Completa nombre y correo electr\u00f3nico.');return;}
-    const btn=document.getElementById('payBtn');
-    btn.textContent='Conectando con Stripe...';btn.disabled=true;
 
-    // Save lead locally
-    const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
-    const ship=getShipping();
-    const total=sub+ship;
-    const lead={name,email,phone,address,items:cart.map(i=>i.name+' x'+i.qty+' ('+(i.pvp*i.qty)+' \u20ac)').join(', '),total,date:new Date().toISOString(),source:'checkout'};
-    let leads=JSON.parse(localStorage.getItem('neo_leads')||'[]');
-    leads.push(lead);
-    localStorage.setItem('neo_leads',JSON.stringify(leads));
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',
+            color: 'gold',
+            shape: 'pill',
+            label: 'pay',
+            height: 48,
+        },
+        createOrder: function(data, actions) {
+            // Validate form
+            const name=document.getElementById('chName').value.trim();
+            const email=document.getElementById('chEmail').value.trim();
+            if(!name||!email){alert('Completa nombre y correo electr\u00f3nico.');return actions.reject();}
 
-    // 📡 Call our backend to create a Stripe Checkout Session
-    const checkoutAPI = 'CHECKOUT_API_URL'; // ← se reemplaza al iniciar el servidor
+            // Call our backend to create PayPal order
+            const items=cart.map(i=>({name:i.name,price:i.pvp,qty:i.qty,category:i.category}));
+            const ship=getShipping();
 
-    const items = cart.map(i => ({
-        name: i.name,
-        price: i.pvp,
-        qty: i.qty,
-        category: i.category
-    }));
+            return fetch(CHECKOUT_API, {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({
+                    items:items,
+                    shipping:ship,
+                    success_url:window.location.origin+'/neo3d-objects/success.html?total='+(cart.reduce((s,i)=>s+i.pvp*i.qty,0)+ship),
+                    cancel_url:window.location.origin+'/neo3d-objects/'
+                })
+            }).then(r=>r.json()).then(data=>{
+                if(data.orderID) return data.orderID;
+                alert('Error al crear el pedido: '+(data.error||'int\u00e9ntalo de nuevo'));
+                return actions.reject();
+            });
+        },
+        onApprove: function(data, actions) {
+            // Save lead on successful payment
+            const name=document.getElementById('chName').value.trim();
+            const email=document.getElementById('chEmail').value.trim();
+            const phone=document.getElementById('chPhone').value.trim();
+            const address=document.getElementById('chAddress').value.trim();
+            saveLead(name, email, phone, address);
+            cart.length=0;
+            updateCart();
 
-    fetch(checkoutAPI, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            items: items,
-            shipping: ship,
-            customer_email: email,
-            success_url: window.location.origin + '/neo3d-objects/success.html?total=' + total,
-            cancel_url: window.location.origin + '/neo3d-objects/'
-        })
-    })
-    .then(r => r.json())
-    .then(data => {
-        if (data.url) {
-            window.location.href = data.url;
-        } else {
-            alert('Error al conectar con Stripe: ' + (data.error || 'Error desconocido'));
-            btn.textContent='Pagar ahora'; btn.disabled=false;
+            // Redirect to success page
+            const sub=cart.reduce((s,i)=>s+i.pvp*i.qty,0);
+            const ship=getShipping();
+            const total=sub+ship;
+            window.location.href=window.location.origin+'/neo3d-objects/success.html?total='+total;
+        },
+        onCancel: function() {
+            // User cancelled - do nothing
+        },
+        onError: function(err) {
+            alert('Error en el pago. Int\u00e9ntalo de nuevo.');
         }
-    })
-    .catch(err => {
-        alert('Error de conexi\u00f3n. Int\u00e9ntalo de nuevo.');
-        btn.textContent='Pagar ahora'; btn.disabled=false;
-    });
+    }).render('#paypal-button-container');
 }
 
 // ─── CONTACT FORM ───
