@@ -3,7 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEO Objects &mdash; Impresi&oacute;n 3D Premium</title>
+    <title>NEO Objects &mdash; Impresi&oacute;n 3D Premium &mdash; Regalos y Decoraci&oacute;n 3D</title>
+    <meta name="description" content="NEO Objects: dise&ntilde;o e impresi&oacute;n 3D premium en Madrid. Figuras decorativas, jarrones, l&aacute;mparas, llaveros, maceteros y regalos personalizados. Hecho en Espa&ntilde;a con materiales de alta calidad. Venta a particulares y mayoristas.">
+    <meta name="keywords" content="impresi&oacute;n 3D, regalos personalizados, decoraci&oacute;n 3D, llaveros 3D, l&aacute;mparas 3D, figuras decorativas, jarrones 3D, maceteros 3D, objetos 3D, regalos originales, impresi&oacute;n 3D Madrid, NEO Objects">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="NEO Objects">
+    <meta property="og:title" content="NEO Objects &mdash; Regalos y Decoraci&oacute;n en Impresi&oacute;n 3D Premium">
+    <meta property="og:description" content="Figuras, l&aacute;mparas, llaveros, jarrones y maceteros impresos en 3D. Piezas &uacute;nicas fabricadas en Madrid. Venta a particulares y mayoristas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://magodago.github.io/neo3d-objects/">
+    <meta property="og:image" content="https://magodago.github.io/neo3d-objects/_product_images/catalogo_cover.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NEO Objects &mdash; Decoraci&oacute;n 3D Premium">
+    <meta name="twitter:description" content="Figuras, l&aacute;mparas, llaveros y decoraci&oacute;n impresa en 3D. Piezas &uacute;nicas. Hecho en Madrid.">
+    <link rel="canonical" href="https://magodago.github.io/neo3d-objects/">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "NEO Objects",
+        "description": "Tienda de objetos decorativos y regalos fabricados con impresi&oacute;n 3D premium.",
+        "url": "https://magodago.github.io/neo3d-objects/",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Madrid",
+            "addressCountry": "ES"
+        }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Sora:wght@200;300;400;500;600&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
@@ -286,7 +313,7 @@
     <div class="bg-glow2"></div>
     <div class="hero-tag">Impresi&oacute;n 3D Premium &middot; Hecho en Espa&ntilde;a</div>
     <h1>Objetos que <span class="gold">transforman</span> espacios</h1>
-    <p class="hero-desc">Cada pieza es &uacute;nica. Vendemos tanto a particulares como a tiendas y mayoristas. Si eres tienda o mayorista solicita tu cat&aacute;logo de precios.</p>
+    <p class="hero-desc">Figuras decorativas, jarrones, l&aacute;mparas 3D, llaveros personalizados, maceteros, bandejas y mucho m&aacute;s. Cada pieza es &uacute;nica, fabricada bajo pedido en Madrid con materiales premium. Vendemos a particulares y a tiendas y mayoristas de toda Espa&ntilde;a.</p>
     <div class="hero-cta">
         <a href="#categorias" class="btn btn-primary">Ver cat&aacute;logo</a>
         <a href="#contacto" class="btn btn-secondary">Soy tienda / mayorista</a>
@@ -314,7 +341,7 @@
     <div class="section-header reveal">
         <div class="section-label">Colecci&oacute;n</div>
         <h2 class="section-title">Categor&iacute;as</h2>
-        <p class="section-sub">Diez l&iacute;neas de producto dise&ntilde;adas para decoraci&oacute;n, regalo y estilo de vida</p>
+        <p class="section-sub">Once l&iacute;neas de producto dise&ntilde;adas para decoraci&oacute;n, iluminaci&oacute;n, regalo y estilo de vida</p>
     </div>
     <div class="categories-grid" id="categoriesGrid"></div>
 </section>
@@ -506,6 +533,7 @@ const CAT_IMAGES={
     wall:'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=800&q=85',
     seasonal:'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=85',
     gifts:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=85',
+    lamps:'https://images.unsplash.com/photo-1507473885765-e6ed057ab6fe?w=800&q=85',
 };
 const PROD_IMG={
     planters:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&q=85',
@@ -518,6 +546,7 @@ const PROD_IMG={
     wall:'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=600&q=85',
     seasonal:'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=85',
     gifts:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=85',
+    lamps:'https://images.unsplash.com/photo-1507473885765-e6ed057ab6fe?w=600&q=85',
 };
 
 const categories=[
@@ -531,6 +560,7 @@ const categories=[
     {id:'wall',name:'Adornos de pared',desc:'Paneles geom\u00e9tricos, estantes flotantes, cuadros 3D. La pared como lienzo.',count:10},
     {id:'seasonal',name:'Navidad y estacional',desc:'\u00c1rboles m\u00ednimos, estrellas 3D, adornos. Dise\u00f1o contempor\u00e1neo para fechas se\u00f1aladas.',count:10},
     {id:'gifts',name:'Regalos y detalles',desc:'Llaveros, imanes, posavasos, marcap\u00e1ginas. El regalo perfecto existe y es anal\u00f3gico.',count:10},
+    {id:'lamps',name:'L\u00e1mparas 3D',desc:'L\u00e1mparas de mesa, colgantes, LED decorativas. Iluminaci\u00f3n con dise\u00f1o y personalidad impresos en 3D.',count:10},
 ];
 const pNames={
     planters:['Macetero Geom\u00e9trico','Macetero Ola','Mini Macetero Suculenta','Macetero Colgante Nube','Macetero Esfera','Macetero Tr\u00edpode','Macetero Cubo','Jardinera Lineal','Macetero Huevo','Set Mini Maceteros 3'],
@@ -543,8 +573,9 @@ const pNames={
     wall:['Panel Hexagonal','Estante Nube','Cuadro 3D Abstracto','Panel Ola','Perchero de Pared','Estante Geom\u00e9trico','Panel de C\u00edrculos','Cuadro Monta\u00f1a','Panel Lineal','Espejo con Marco'],
     seasonal:['\u00c1rbol Navidad Mini','Adorno Esfera','Estrella 3D','Copo de Nieve','Bel\u00e9n Abstracto','Figura Reno','Set 3 Bolas','\u00c1ngel Mini','Casa de Navidad','Calendario Adviento'],
     gifts:['Llavero Inicial','Set 4 Imanes','Set 6 Posavasos','Llavero Abstracto','Abrecartas','Marcap\u00e1ginas','Llavero Animal','Set Imanes Nevera','Llavero Placa','Mini Escultura'],
+    lamps:['L\u00e1mpara de Mesa Geom\u00e9trica','L\u00e1mpara Colgante Esfera','L\u00e1mpara LED Nube','L\u00e1mpara de Pie Minimalista','L\u00e1mpara Mesa Ola','L\u00e1mpara Colgante Hex\u00e1gono','Velador Abstracto','L\u00e1mpara LED Cubo','L\u00e1mpara Colgante Anillo','Set 2 L\u00e1mparas Mesa'],
 };
-const basePrices=[14,22,12,24,16,12,18,20,14,8];
+const basePrices=[14,22,12,24,16,12,18,20,14,8,28];
 const cart=[];
 const SHIPPING_COST=6;
 const FREE_SHIPPING_FROM=100;

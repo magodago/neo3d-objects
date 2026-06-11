@@ -1,0 +1,15 @@
+Email Extraction Log
+Total stores: 398
+With websites: 32
+Emails found: 27
+Skipped (no web): 348
+==================================================
+Visor Libros SL|Madrid|librero@visor-libros.com|https://www.visor-libros.com/
+Master Regalos|Fuenlabrada|info@masterregalos.es|http://www.masterregalos.es
+Centro Artesano|San Sebastián de los Reyes|info@centroartesano.es|https://www.centroartesano.es/
+Fronda|San Sebastián de los Reyes|atencionalcliente@fronda.com|https://www.fronda.com/
+Librería Serendipias|Tres Cantos|letonia@serendipiaslibrosymas.es|https://serendipiaslibrosymas.es/
+Manos y Colores|Galapagar|coral@manosycolores.com|http://manosycolores.es
+La Guarida|Cercedilla|info@librerialaguarida.com|https://librerialaguarida.com
+Garden Center|Latina|info@gardencenterfondi.com|https://www.gardencenterfondi.com/
+Joyería Paco Moro, Joyas de Autor|Salamanca|contacto@pacomoro.com|https://www.pacomoro.com/

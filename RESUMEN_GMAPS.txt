@@ -1,0 +1,8 @@
+GOOGLE MAPS - TIENDAS EXTRAÍDAS
+Total: 230 tiendas
+  Floristería: 118
+  Tienda de regalos: 60
+  Decoración: 52
+
+📞 Con teléfono: 218/230
+🌐 Con web: 230/230
